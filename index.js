@@ -1,9 +1,26 @@
 /**
- * @format
+ * the root file.
  */
+import { Navigation } from "react-native-navigation";
+import { registerScreens } from "./src/navigation";
+import { screens } from "./src/navigation/screens";
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+/**
+ * execute register screens function.
+ */
+registerScreens();
 
-AppRegistry.registerComponent(appName, () => App);
+/**
+ * "registerAppLaunchedListener" event.
+ */
+Navigation.events().registerAppLaunchedListener(() => {
+    console.log('AAAAA')
+    Navigation.setRoot({
+        root: {
+            component: {
+                id:screens.HOME,
+                name:screens.HOME
+            }
+        }
+    });
+});
