@@ -6,6 +6,7 @@
     "a": "react-native run-android",
     "i": "react-native run-ios",
     "s": "react-native start",
+    "d": "adb shell input keyevent 82",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
