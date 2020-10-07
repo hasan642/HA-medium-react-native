@@ -3,6 +3,10 @@ import {
     StyleSheet,
     View
 } from 'react-native';
+import {
+    layout,
+    color
+} from '../theme';
 
 /**
  * interfaces and types.
@@ -27,7 +31,7 @@ function SideMenu() {
  */
 function ProfileSection(props: ProfileSectionProps) {
     return (
-        <View style={styles.profileSection}>
+        <View>
 
         </View>
     );
@@ -40,10 +44,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'blue'
-    },
-    profileSection: {
-        height: 200,
-        // backgroundColor:
     }
 });
 
