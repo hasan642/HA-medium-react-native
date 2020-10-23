@@ -7,7 +7,14 @@ import { color } from '../../theme';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: color.light
+        backgroundColor: color.light,
+        justifyContent: 'flex-end'
+    },
+    btns: {
+        justifyContent: 'center',
+        width: '85%',
+        alignSelf: 'center',
+        marginBottom: 20
     }
 });
 
