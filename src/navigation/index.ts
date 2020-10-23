@@ -1,1 +1,4 @@
-export { registerScreens } from './screens';
+export {
+    registerScreens,
+    screens
+} from './screens';
