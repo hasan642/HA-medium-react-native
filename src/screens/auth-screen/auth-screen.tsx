@@ -50,14 +50,21 @@ function LoginScreen(props: LoginScreenProps) {
                     {'Twitter'}
                 </Button>
 
-                <Button
-                    icon={'mail'}
-                    onPress={() => {
-                    }}
-                    style={commonStyles.marginTop8}
-                >
-                    {'Email'}
-                </Button>
+                {
+                    /**
+                     * maybe used later,
+                     * * social login are supported now.
+                     */
+                    // <Button
+                    //     icon={'mail'}
+                    //     onPress={() => {
+                    //     }}
+                    //     style={commonStyles.marginTop8}
+                    // >
+                    //     {'Email'}
+                    // </Button>
+                }
+
             </AnimatbleView>
         );
     }
