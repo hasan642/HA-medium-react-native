@@ -7,8 +7,10 @@ import {
     Text
 } from 'components';
 import { View as AnimatbleView } from 'react-native-animatable';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
-
+import {
+    GoogleSignin,
+    statusCodes,
+} from '@react-native-community/google-signin';
 
 /**
  * interfaces and types.
@@ -22,7 +24,27 @@ interface LoginScreenProps {
  */
 function LoginScreen(props: LoginScreenProps) {
 
-    const SignUpView = () => {
+    const signIn = async () => {
+        try {
+            const has = await GoogleSignin.hasPlayServices();
+            console.log('dddd', has)
+            const userInfo = await GoogleSignin.signIn();
+            console.log('user is', userInfo);
+        } catch (error) {
+            console.log('error', error)
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                // user cancelled the login flow
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                // operation (e.g. sign in) is in progress already
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                // play services not available or outdated
+            } else {
+                // some other error happened
+            }
+        }
+    };
+
+    const AuthView = () => {
         return (
             <AnimatbleView
                 animation='bounceInLeft'
@@ -38,7 +60,7 @@ function LoginScreen(props: LoginScreenProps) {
 
                 <Button
                     icon={'google'}
-                    onPress={() => { }}
+                    onPress={signIn}
                     style={commonStyles.marginTop8}
                 >
                     {'Google'}
@@ -87,27 +109,7 @@ function LoginScreen(props: LoginScreenProps) {
                 </Text>
             </AnimatbleView>
 
-            <SignUpView />
-
-            <View>
-                <LoginButton
-                    onLoginFinished={
-                        (error, result) => {
-                            if (error) {
-                                console.log("login has error: " + result.error);
-                            } else if (result.isCancelled) {
-                                console.log("login is cancelled.");
-                            } else {
-                                AccessToken.getCurrentAccessToken().then(
-                                    (data) => {
-                                        console.log(data.accessToken.toString())
-                                    }
-                                )
-                            }
-                        }
-                    }
-                    onLogoutFinished={() => console.log("logout.")} />
-            </View>
+            <AuthView />
         </View>
     );
 };

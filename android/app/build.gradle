@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
@@ -183,6 +184,10 @@ android {
 }
 
 dependencies {
+
+    // firebase dependencies
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-analytics'
 
     // to enable multi dex
      implementation 'com.android.support:multidex:1.0.3'
