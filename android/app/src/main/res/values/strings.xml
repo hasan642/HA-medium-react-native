@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimpleMedium</string>
+    <string name="facebook_app_id">459013078022433</string>
+    <string name="fb_login_protocol_scheme">fb459013078022433</string>
 </resources>
