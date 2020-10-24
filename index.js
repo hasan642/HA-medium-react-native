@@ -31,8 +31,8 @@ Navigation.events().registerAppLaunchedListener(() => {
                         id: "App",
                         children: [{
                             component: {
-                                id: screens.LOGIN_SCREEN,
-                                name: screens.LOGIN_SCREEN
+                                id: screens.AUTH_SCREEN,
+                                name: screens.AUTH_SCREEN
                             }
                         }]
                     }

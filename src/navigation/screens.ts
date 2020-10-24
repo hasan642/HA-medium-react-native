@@ -3,9 +3,9 @@ import { Navigation } from "react-native-navigation";
 /**
  * import screens.
  */
-import { HomeScreen } from '../screens/home-screen';
+import { HomeScreen } from 'screens';
 import SideMenu from "./side-menu";
-import { LoginScreen } from "../screens/login-screen";
+import { AuthScreen } from 'screens';
 
 /**
  * constants.
@@ -18,7 +18,7 @@ const prefix = 'com.app';
 export const screens = {
     HOME: `${prefix}.home`,
     SIDE_MENU: `${prefix}.sideMenu`,
-    LOGIN_SCREEN: `${prefix}.loginScreen`
+    AUTH_SCREEN: `${prefix}.authScreen`
 };
 
 /**
@@ -36,7 +36,7 @@ export function registerScreens() {
     );
 
     Navigation.registerComponent(
-        screens.LOGIN_SCREEN,
-        () => LoginScreen
+        screens.AUTH_SCREEN,
+        () => AuthScreen
     );
 };

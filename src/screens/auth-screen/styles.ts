@@ -8,13 +8,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: color.light,
-        justifyContent: 'flex-end'
+        justifyContent: 'center'
     },
     btns: {
         justifyContent: 'center',
         width: '85%',
         alignSelf: 'center',
         marginBottom: 20
+    },
+    title: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 50
+    },
+    subTitle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 25,
+        marginVertical: 10
     }
 });
 

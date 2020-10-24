@@ -1,6 +1,9 @@
 import React, { ReactNode } from 'react';
-import { Button as RNPaperBtn } from 'react-native-paper';
-import styles from './styles';
+import {
+    Button as RNPaperBtn
+} from 'react-native-paper';
+import { IconSource } from 'react-native-paper/src/components/Icon';
+import styles, { buttonTheme } from './styles';
 import { ViewStyle } from 'react-native';
 
 /**
@@ -16,6 +19,7 @@ interface ButtonProps {
     loading?: boolean;
     disabled?: boolean;
     style?: ViewStyle;
+    icon?: IconSource;
 };
 
 /**
@@ -31,16 +35,25 @@ function Button(props: ButtonProps) {
         loading,
         disabled,
         children,
-        style: overrideStyle
+        style: overrideStyle,
+        icon
     } = props;
 
     return (
         <RNPaperBtn
+            theme={buttonTheme}
+            icon={icon}
             loading={loading}
             disabled={disabled}
             compact
             onPress={onPress}
-            style={[styles.btn, overrideStyle]}
+            style={[
+                styles.btn,
+                overrideStyle
+            ]}
+            labelStyle={[
+                styles.btnLabelStyle
+            ]}
         >
             {children}
         </RNPaperBtn>
