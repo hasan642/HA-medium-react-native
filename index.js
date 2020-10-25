@@ -6,6 +6,9 @@ import {
     registerScreens,
     screens
 } from "./src/navigation";
+import { GoogleSignin } from "@react-native-community/google-signin";
+
+GoogleSignin.configure();
 
 /**
  * execute register screens function.
