@@ -2,13 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  
+    
   <key>CFBundleURLTypes</key>
   <array>
     <dict>
     <key>CFBundleURLSchemes</key>
     <array>
       <string>fb459013078022433</string>
+	  <string>twitterkit-oRklIZZz3YYrznKo1ib7cM2CC</string>
     </array>
     </dict>
   </array>
@@ -17,21 +18,12 @@
   <key>FacebookDisplayName</key>
   <string>Medium</string>
   
-  
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-    <key>CFBundleURLSchemes</key>
-    <array>
-      <string>fb459013078022433</string>
-    </array>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>459013078022433</string>
-  <key>FacebookDisplayName</key>
-  <string>Medium</string>
-  
+  <key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>twitter</string>
+    <string>twitterauth</string>
+</array>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

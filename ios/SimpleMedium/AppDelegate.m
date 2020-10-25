@@ -6,6 +6,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <TwitterKit/TWTRKit.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -72,5 +73,10 @@ static void InitializeFlipper(UIApplication *application) {
                                                  options:options];
   return YES;
 }
+
+// for Twitter login @TODO add it to the up function.
+//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+//  return [[Twitter sharedInstance] application:app openURL:url options:options];
+//}
 
 @end
