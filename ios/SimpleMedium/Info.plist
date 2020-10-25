@@ -2,6 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+	<key>CFBundleTypeRole</key>
+	<string>Editor</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fb459013078022433</string>
+	  <string>twitterkit-oRklIZZz3YYrznKo1ib7cM2CC</string>
+	  <string>com.googleusercontent.apps.865600530523-aqr9bdsqq6rcskqk9aiui41kfama2e6l</string>
+    </array>
+    </dict>
+  </array>
+  <key>FacebookAppID</key>
+  <string>459013078022433</string>
+  <key>FacebookDisplayName</key>
+  <string>Medium</string>
+  
+  <key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>twitter</string>
+    <string>twitterauth</string>
+</array>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -20,25 +45,7 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb459013078022433</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.865600530523-aqr9bdsqq6rcskqk9aiui41kfama2e6l</string>
-			</array>
-		</dict>
-	</array>
+		
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>

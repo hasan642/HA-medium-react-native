@@ -5653,6 +5653,11 @@ react-native-fbsdk@^2.0.0:
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-2.0.0.tgz#eb041bdb8f9b9180a1696d3bd7d7accee6554262"
   integrity sha512-CyPKoBVt9Y+KznALcnN4lkh6dUNqZjyFS6GbkXXTFf72wR9Dl8bXF2dDj56w/o5/TFoCnNCmQlZgh7P/NiElZQ==
 
+react-native-login-twitter@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-login-twitter/-/react-native-login-twitter-3.0.4.tgz#33bbbe9b37713468f919fb99853ce51b43616470"
+  integrity sha512-mA54vK+FlttXEYH05oUA72OVr8KN1Lo8t8/WoGn3RSrAvuaFab6rjje8Pp9nwRWLZPSLckdd3XAGJ4WKH97Smw==
+
 react-native-navigation@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.1.0.tgz#05dbfc6b31dd6a8aa626a74b2f51e1cc031b230d"
