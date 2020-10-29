@@ -12,7 +12,10 @@ import {
     GoogleSignin,
     statusCodes,
 } from '@react-native-community/google-signin';
-import { SocialLogin } from 'utils';
+import {
+    SocialLogin,
+    General as GeneralUtils
+} from 'utils';
 
 /**
  * interfaces and types.
@@ -46,9 +49,37 @@ function LoginScreen(props: LoginScreenProps) {
         }
     };
 
-    // const continueWithFB=()=>{
-    //     SocialLogin.continueWithFB()
-    // }
+    const continueWithFB = () => {
+        SocialLogin.continueWithFB()
+            .then(({
+                user,
+                kind,
+                error
+            }) => {
+                console.log({
+                    user,
+                    kind,
+                    error
+                })
+                if (kind === 'REJECTED') {
+                    return GeneralUtils.showAlert(
+                        null,
+                        error,
+                        [{
+                            text: 'ok',
+                            style: 'cancel'
+                        }],
+                        {
+                            cancelable: true
+                        }
+                    )
+                };
+
+                //do some login when tjere is no errors.
+
+            });
+    };
+
     const AuthView = () => {
         return (
             <AnimatbleView
@@ -58,7 +89,7 @@ function LoginScreen(props: LoginScreenProps) {
             >
                 <Button
                     icon={'facebook'}
-                    onPress={SocialLogin.continueWithFB}
+                    onPress={continueWithFB}
                 >
                     {'Facebook'}
                 </Button>
@@ -83,22 +114,6 @@ function LoginScreen(props: LoginScreenProps) {
                 >
                     {'Twitter'}
                 </Button>
-
-                {
-                    /**
-                     * maybe used later,
-                     * * social login are supported now.
-                     */
-                    // <Button
-                    //     icon={'mail'}
-                    //     onPress={() => {
-                    //     }}
-                    //     style={commonStyles.marginTop8}
-                    // >
-                    //     {'Email'}
-                    // </Button>
-                }
-
             </AnimatbleView>
         );
     }
