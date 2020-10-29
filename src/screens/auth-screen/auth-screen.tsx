@@ -7,13 +7,12 @@ import {
     Text
 } from 'components';
 import { View as AnimatbleView } from 'react-native-animatable';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { TwitterLogin } from 'react-native-login-twitter';
-
 import {
     GoogleSignin,
     statusCodes,
 } from '@react-native-community/google-signin';
+import { SocialLogin } from 'utils';
 
 /**
  * interfaces and types.
@@ -47,6 +46,9 @@ function LoginScreen(props: LoginScreenProps) {
         }
     };
 
+    // const continueWithFB=()=>{
+    //     SocialLogin.continueWithFB()
+    // }
     const AuthView = () => {
         return (
             <AnimatbleView
@@ -56,7 +58,7 @@ function LoginScreen(props: LoginScreenProps) {
             >
                 <Button
                     icon={'facebook'}
-                    onPress={() => { }}
+                    onPress={SocialLogin.continueWithFB}
                 >
                     {'Facebook'}
                 </Button>
