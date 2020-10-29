@@ -10,8 +10,6 @@ import { View as AnimatbleView } from 'react-native-animatable';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { TwitterLogin } from 'react-native-login-twitter';
 
-TwitterLogin.init('oRklIZZz3YYrznKo1ib7cM2CC',
-    'oS1jFlAew0hupcAiGKNlHYyMfaV6PviFD4T4oXWe6Yu4I8CsNI');
 import {
     GoogleSignin,
     statusCodes,
@@ -75,9 +73,9 @@ function LoginScreen(props: LoginScreenProps) {
                     icon={'twitter'}
                     onPress={() => {
                         TwitterLogin.logIn()
-                        .catch(error=>{
-                            console.log('error in',error)
-                        })
+                            .catch(error => {
+                                console.log('error in', error)
+                            })
                     }}
                     style={commonStyles.marginTop8}
                 >
