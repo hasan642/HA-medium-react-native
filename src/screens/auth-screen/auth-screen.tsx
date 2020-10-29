@@ -7,6 +7,15 @@ import {
     Text
 } from 'components';
 import { View as AnimatbleView } from 'react-native-animatable';
+import { TwitterLogin } from 'react-native-login-twitter';
+import {
+    GoogleSignin,
+    statusCodes,
+} from '@react-native-community/google-signin';
+import {
+    SocialLogin,
+    General as GeneralUtils
+} from 'utils';
 
 /**
  * interfaces and types.
@@ -20,7 +29,58 @@ interface LoginScreenProps {
  */
 function LoginScreen(props: LoginScreenProps) {
 
-    const SignUpView = () => {
+    const signIn = async () => {
+        try {
+            const has = await GoogleSignin.hasPlayServices();
+            console.log('dddd', has)
+            const userInfo = await GoogleSignin.signIn();
+            console.log('user is', userInfo);
+        } catch (error) {
+            console.log('error', error)
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                // user cancelled the login flow
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                // operation (e.g. sign in) is in progress already
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                // play services not available or outdated
+            } else {
+                // some other error happened
+            }
+        }
+    };
+
+    const continueWithFB = () => {
+        SocialLogin.continueWithFB()
+            .then(({
+                user,
+                kind,
+                error
+            }) => {
+                console.log({
+                    user,
+                    kind,
+                    error
+                })
+                if (kind === 'REJECTED') {
+                    return GeneralUtils.showAlert(
+                        null,
+                        error,
+                        [{
+                            text: 'ok',
+                            style: 'cancel'
+                        }],
+                        {
+                            cancelable: true
+                        }
+                    )
+                };
+
+                //do some login when tjere is no errors.
+
+            });
+    };
+
+    const AuthView = () => {
         return (
             <AnimatbleView
                 animation='bounceInLeft'
@@ -29,14 +89,14 @@ function LoginScreen(props: LoginScreenProps) {
             >
                 <Button
                     icon={'facebook'}
-                    onPress={() => { }}
+                    onPress={continueWithFB}
                 >
                     {'Facebook'}
                 </Button>
 
                 <Button
                     icon={'google'}
-                    onPress={() => { }}
+                    onPress={signIn}
                     style={commonStyles.marginTop8}
                 >
                     {'Google'}
@@ -44,27 +104,16 @@ function LoginScreen(props: LoginScreenProps) {
 
                 <Button
                     icon={'twitter'}
-                    onPress={() => { }}
+                    onPress={() => {
+                        TwitterLogin.logIn()
+                            .catch(error => {
+                                console.log('error in', error)
+                            })
+                    }}
                     style={commonStyles.marginTop8}
                 >
                     {'Twitter'}
                 </Button>
-
-                {
-                    /**
-                     * maybe used later,
-                     * * social login are supported now.
-                     */
-                    // <Button
-                    //     icon={'mail'}
-                    //     onPress={() => {
-                    //     }}
-                    //     style={commonStyles.marginTop8}
-                    // >
-                    //     {'Email'}
-                    // </Button>
-                }
-
             </AnimatbleView>
         );
     }
@@ -85,7 +134,7 @@ function LoginScreen(props: LoginScreenProps) {
                 </Text>
             </AnimatbleView>
 
-            <SignUpView />
+            <AuthView />
         </View>
     );
 };
