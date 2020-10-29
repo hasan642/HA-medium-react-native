@@ -7,11 +7,13 @@ import {
     AccessToken
 } from "react-native-fbsdk";
 import General from "./general";
+import { GeneralApi } from "api";
+import { GetFBUserData } from "api/types";
 
 /**
  * A functoion to continue with FB.
  */
-async function continueWithFB() {
+async function continueWithFB(): Promise<GetFBUserData> {
 
     /**
      * request permissions from user.
@@ -22,7 +24,7 @@ async function continueWithFB() {
      * check if cancelled or not.
      */
     if (permissions.isCancelled) {
-        return General.showAlert(
+        General.showAlert(
             null,
             'user cancel action',
             [
@@ -35,13 +37,17 @@ async function continueWithFB() {
                 cancelable: true
             }
         );
+
+        return {
+            kind: 'REJECTED'
+        };
     }
 
     /**
      * check if all permissions granted or not.
      */
     else if (permissions.grantedPermissions.length !== requestedPermissions.length) {
-        return General.showAlert(
+        General.showAlert(
             null,
             'permissions were not granted',
             [
@@ -54,15 +60,27 @@ async function continueWithFB() {
                 cancelable: true
             }
         );
+        
+        return {
+            kind: 'REJECTED'
+        };
     };
 
     /**
      * here we are sure user does not cancel facebook login
      * * and all permissions are not granted.
      */
-    const accessFBToken = await AccessToken.getCurrentAccessToken();
-    console.log('access is', accessFBToken);
+    const { accessToken } = await AccessToken.getCurrentAccessToken();
 
+    /**
+     * get userdata by access token.
+     */
+    const userData = await GeneralApi.getFBUserData(accessToken);
+
+    /**
+     * return final userdata.
+     */
+    return userData;
 };
 
 /**
