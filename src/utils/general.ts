@@ -1,4 +1,8 @@
-import { Alert, AlertOptions, AlertButton } from "react-native";
+import {
+    Alert,
+    AlertOptions,
+    AlertButton
+} from "react-native";
 
 /**
  * A .ts file that contains a general utils functions.

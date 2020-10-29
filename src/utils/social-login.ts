@@ -2,7 +2,10 @@
  * A .ts file that contains a social login.
  */
 
-import { LoginManager, AccessToken } from "react-native-fbsdk";
+import {
+    LoginManager,
+    AccessToken
+} from "react-native-fbsdk";
 import General from "./general";
 
 /**
