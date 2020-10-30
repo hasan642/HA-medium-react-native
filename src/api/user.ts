@@ -24,7 +24,7 @@ class User extends Api {
          * create response.
          */
         const response = await this.post(
-            `${SHARED_VARIABLES.API_BASE_URL}users/create_user`,
+            `${SHARED_VARIABLES.API_BASE_URL}/users/create_user`,
             {
                 user_name: userName,
                 email: email
