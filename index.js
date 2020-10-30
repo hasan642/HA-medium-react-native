@@ -1,6 +1,7 @@
 /**
  * the root file.
  */
+
 import { Navigation } from "react-native-navigation";
 import {
     registerScreens,

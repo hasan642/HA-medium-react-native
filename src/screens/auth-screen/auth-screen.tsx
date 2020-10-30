@@ -16,6 +16,8 @@ import {
     SocialLogin,
     General as GeneralUtils
 } from 'utils';
+import { translate } from 'i18n';
+import { getAppName } from 'config';
 
 /**
  * interfaces and types.
@@ -49,6 +51,9 @@ function LoginScreen(props: LoginScreenProps) {
         }
     };
 
+    /**
+     * handle continue with facebook.
+     */
     const continueWithFB = () => {
         SocialLogin.continueWithFB()
             .then(({
@@ -127,10 +132,10 @@ function LoginScreen(props: LoginScreenProps) {
                 style={styles.btns}
             >
                 <Text style={styles.title}>
-                    {'Join Medium.'}
+                    {`${translate('authScreen.joinTo')} ${getAppName()}`}
                 </Text>
                 <Text style={styles.subTitle}>
-                    {'continue with ...'}
+                    {translate('authScreen.continueWith')}
                 </Text>
             </AnimatbleView>
 

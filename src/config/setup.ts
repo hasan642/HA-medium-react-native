@@ -1,5 +1,6 @@
 import { TwitterLogin } from "react-native-login-twitter";
 import { GoogleSignin } from "@react-native-community/google-signin";
+import { setI18nConfig } from "i18n";
 
 /**
  * A file for setup and init some things.
@@ -23,4 +24,8 @@ export function init() {
      */
     GoogleSignin.configure();
 
+    /**
+     * set "i18n" config.
+     */
+    setI18nConfig();
 };
