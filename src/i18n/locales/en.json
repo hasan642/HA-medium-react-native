@@ -1,0 +1,7 @@
+{
+    "common": {},
+    "authScreen": {
+        "joinTo": "Join to",
+        "continueWith": "Continue with ..."
+    }
+}
