@@ -6,10 +6,14 @@ import { DEFAULT_HEADERS } from "./default";
 type ObjectType = { [key: string]: any };
 
 /**
- * A base class of api (fetch).
+ * A base class of api with (fetch js),
+ * "get,post,put, and delete" methods have been handled.
  */
 class Api {
 
+    /**
+     * implement the "GET" method.
+     */
     get = async (
         url: string,
         headers?: ObjectType,
@@ -51,14 +55,23 @@ class Api {
         return apiCall;
     };
 
+    /**
+     * implement the "POST" method.
+     */
     post = () => {
 
     };
 
+    /**
+     * implement the "PUT" method.
+     */
     put = () => {
 
     };
 
+    /**
+     * implement the "DELETE" method.
+     */
     delete = () => {
 
     };
