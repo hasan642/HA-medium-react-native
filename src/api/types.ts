@@ -2,6 +2,8 @@
  * A types of apis will be here.
  */
 
+ import { UserApiModel } from './models';
+
 /**
  * types.
  */
@@ -25,7 +27,7 @@ export type GetFBUserData = {
 
 export type CreateUserData = {
     kind: Kind;
-    userId?: string;
+    user?: UserApiModel;
     error?: string;
 };
 

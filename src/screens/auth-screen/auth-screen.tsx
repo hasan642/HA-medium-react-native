@@ -80,7 +80,12 @@ function LoginScreen(props: LoginScreenProps) {
                     )
                 };
 
-                //do some login when tjere is no errors.
+                /**
+                 * handle user response.
+                 * 
+                 * @TODO:
+                 * handle this in redux.
+                 */
                 const createdUser = await UserApi.createNewUser(user.name, user.email);
                 console.log('createdUser', createdUser);
             });
