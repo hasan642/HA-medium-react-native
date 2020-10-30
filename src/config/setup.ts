@@ -6,8 +6,11 @@ import { TwitterLogin } from "react-native-login-twitter";
 import { GoogleSignin } from "@react-native-community/google-signin";
 import { setI18nConfig } from "i18n";
 import { NativeModules } from 'react-native';
-import Reactotron, { trackGlobalErrors } from 'reactotron-react-native'
+import Reactotron, {
+    trackGlobalErrors
+} from 'reactotron-react-native'
 import RNAsyncStorage from '@react-native-community/async-storage';
+import { SHARED_VARIABLES } from "config";
 
 /**
  * setup reacttotron config.
@@ -44,8 +47,8 @@ export function init() {
      * init twitter.
      */
     TwitterLogin.init(
-        'oRklIZZz3YYrznKo1ib7cM2CC',
-        'oS1jFlAew0hupcAiGKNlHYyMfaV6PviFD4T4oXWe6Yu4I8CsNI'
+        SHARED_VARIABLES.TWITTER_COMSUMER_KEY,
+        SHARED_VARIABLES.TWITTER_CONSUMER_SECRET
     );
 
     /**
