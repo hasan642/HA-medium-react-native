@@ -6,7 +6,7 @@
  * A default headers for apis.
  */
 export const DEFAULT_HEADERS = {
-
+    'Content-Type': 'application/json'
 };
 
 /**
@@ -15,3 +15,8 @@ export const DEFAULT_HEADERS = {
 export const DEFAULT_PARAMS = {
 
 };
+
+/**
+ * A base url.
+ */
+export const BASE_URL = 'http://localhost:3000/';

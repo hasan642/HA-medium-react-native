@@ -23,6 +23,12 @@ export type GetFBUserData = {
     error?: string;
 };
 
+export type CreateUserData = {
+    kind: Kind;
+    userId?: string;
+    error?: string;
+};
+
 /**
  * A function that gets error based on status.
  */

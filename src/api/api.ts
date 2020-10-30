@@ -34,12 +34,13 @@ class Api {
              * add params to url.
              */
             url += `?${query.join('&')}`;
+
         };
 
         /**
-         * api call.
+         * returns a get api call.
          */
-        const apiCall = fetch(
+        return fetch(
             url,
             {
                 headers: {
@@ -48,18 +49,28 @@ class Api {
                 },
             }
         );
-
-        /**
-         * return api call.
-         */
-        return apiCall;
     };
 
     /**
      * implement the "POST" method.
      */
-    post = () => {
+    post = (
+        url: string,
+        body?: ObjectType,
+        headers?: ObjectType
+    ) => {
 
+        /**
+         * returns a post api call.
+         */
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                ...DEFAULT_HEADERS,
+                ...headers
+            },
+            body: JSON.stringify(body),
+        });
     };
 
     /**

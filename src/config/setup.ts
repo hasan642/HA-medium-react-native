@@ -1,11 +1,44 @@
+/**
+ * A .ts file that contains a config file.
+ */
+
 import { TwitterLogin } from "react-native-login-twitter";
 import { GoogleSignin } from "@react-native-community/google-signin";
 import { setI18nConfig } from "i18n";
+import { NativeModules } from 'react-native';
+import Reactotron, { trackGlobalErrors } from 'reactotron-react-native'
+import RNAsyncStorage from '@react-native-community/async-storage';
 
 /**
- * A file for setup and init some things.
+ * setup reacttotron config.
  */
+function setupReactoTron() {
+
+    /**
+     * grabs the ip address, to run physical Android device.
+     */
+    const scriptURL = NativeModules.SourceCode.scriptURL;
+    const scriptHostname = scriptURL.split('://')[1].split(':')[0];
+
+    /**
+     * configure "Reactotron".
+     */
+    Reactotron
+        .configure({ host: scriptHostname })
+        .use(trackGlobalErrors(null))
+        .setAsyncStorageHandler(RNAsyncStorage)
+        .useReactNative({
+            storybook: true
+        })
+        .connect();
+};
+
 export function init() {
+
+    /**
+     * setup "reactotron".
+     */
+    setupReactoTron();
 
     /**
      * init twitter.

@@ -18,6 +18,7 @@ import {
 } from 'utils';
 import { translate } from 'i18n';
 import { getAppName } from 'config';
+import { UserApi } from 'api';
 
 /**
  * interfaces and types.
@@ -56,17 +57,16 @@ function LoginScreen(props: LoginScreenProps) {
      */
     const continueWithFB = () => {
         SocialLogin.continueWithFB()
-            .then(({
+            .then(async ({
                 user,
                 kind,
                 error
             }) => {
-                console.log({
-                    user,
-                    kind,
-                    error
-                })
-                if (kind === 'REJECTED') {
+
+                /**
+                 * handle if kind is not "OK".
+                 */
+                if (kind !== 'OK') {
                     return GeneralUtils.showAlert(
                         null,
                         error,
@@ -81,7 +81,8 @@ function LoginScreen(props: LoginScreenProps) {
                 };
 
                 //do some login when tjere is no errors.
-
+                const createdUser = await UserApi.createNewUser(user.name, user.email);
+                console.log('createdUser', createdUser);
             });
     };
 
