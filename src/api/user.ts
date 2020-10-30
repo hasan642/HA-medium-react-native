@@ -4,7 +4,7 @@
  */
 
 import Api from "./api";
-import { BASE_URL } from "./default";
+import { SHARED_VARIABLES } from 'config';
 import * as ApiTypes from './types';
 
 /**
@@ -24,7 +24,7 @@ class User extends Api {
          * create response.
          */
         const response = await this.post(
-            `${BASE_URL}users/create_user`,
+            `${SHARED_VARIABLES.API_BASE_URL}/users/create_user`,
             {
                 user_name: userName,
                 email: email

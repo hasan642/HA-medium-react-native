@@ -15,8 +15,3 @@ export const DEFAULT_HEADERS = {
 export const DEFAULT_PARAMS = {
 
 };
-
-/**
- * A base url.
- */
-export const BASE_URL = 'http://localhost:3000/';

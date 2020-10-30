@@ -8,7 +8,7 @@ import {
     setMainRoot,
     setDefaultOptions
 } from "./src/navigation";
-import { init } from "config";
+import { init,SHARED_VARIABLES } from "config";
 
 /**
  * execute register screens function.
