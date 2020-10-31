@@ -1,7 +1,7 @@
 /**
  * A User model interfaces and types.
  */
-interface Subscription {
+interface UserSubscription {
     isSubscribed: boolean;
     date: number;
 };
@@ -10,7 +10,7 @@ export interface UserProps {
     name: string;
     email: string;
     updatedAt: number;
-    subscription?: Subscription;
+    subscription?: UserSubscription;
 };
 
 /**
@@ -30,9 +30,9 @@ class User {
     constructor(obj: UserProps) {
         for (let key in obj) {
             this[key] = obj[key];
-        }
+        };
     };
-    
+
 };
 
 /**

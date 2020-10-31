@@ -84,7 +84,7 @@ function LoginScreen(props: LoginScreenProps) {
                  * handle user response.
                  * 
                  * @TODO:
-                 * handle this in redux.
+                 * handle this in redux with "redux-toolkit".
                  */
                 const createdUser = await UserApi.createNewUser(user.name, user.email);
                 console.log('createdUser', createdUser);

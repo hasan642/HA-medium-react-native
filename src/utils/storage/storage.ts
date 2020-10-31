@@ -6,12 +6,12 @@ import RNAsyncStorage from '@react-native-community/async-storage';
 import * as StorageTypes from './storage.types';
 
 /**
- * An async storage class.
+ * An async-storage class.
  */
 class AsyncStorage {
 
     /**
-     * A private function that returns "JSON" or "string".
+     * A private function that returns the storage model.
      */
     private _returnData = (str: string): StorageTypes.StorageModel => {
         try {
@@ -28,19 +28,19 @@ class AsyncStorage {
     private _convertData = (data: any) => {
 
         /**
-         * start with same type.
+         * assume that is "string".
          */
-        let convertedData = data;
-
-        /**
-         * get the type of data.
-         */
-        const typeOfData = typeof data;
+        let convertedData = String(data);
 
         /**
          * convert data based on type.
          */
-        switch (typeOfData) {
+        switch (typeof data) {
+
+            case "string":
+                // do nothing (no need), bz it is already string.
+                break;
+
             case "object":
                 convertedData = JSON.stringify(data);
                 break;
@@ -52,6 +52,7 @@ class AsyncStorage {
                 throw new Error('Symbol type is not allowed');
 
             default:
+                // number, boolean, ....
                 convertedData = String(data);
                 break;
         };
