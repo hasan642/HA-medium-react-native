@@ -6,6 +6,7 @@
 import Api from "./api";
 import { SHARED_VARIABLES } from 'config';
 import * as ApiTypes from './types';
+import { UserApiModel } from 'api';
 
 /**
  * A user sub-class to handle user apis.
@@ -42,9 +43,35 @@ class User extends Api {
         };
 
         /**
+         * grap user data from response.
+         */
+        const {
+            user,
+            user: { subscription }
+        } = await response.json();
+
+        /**
+         * serialize user data.
+         */
+        const serializedUser = new UserApiModel({
+            id: user._id,
+            name: user.user_name,
+            email: user.email,
+            updatedAt: user.updated_at,
+            subscription: subscription &&
+                {
+                    isSubscribed: subscription.is_subscribed,
+                    date: subscription.subscription_date
+                },
+        });
+
+        /**
          * return final response.
          */
-        const res = await response.json();
+        return {
+            kind: 'OK',
+            user: serializedUser
+        };
 
     };
 

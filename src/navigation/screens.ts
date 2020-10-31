@@ -10,7 +10,7 @@ import { AuthScreen } from 'screens';
 /**
  * constants.
  */
-const prefix = 'com.app';
+const prefix = 'com.medium';
 
 /**
  * screen names.
