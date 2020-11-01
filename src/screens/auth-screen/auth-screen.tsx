@@ -18,7 +18,14 @@ import {
 } from 'utils';
 import { translate } from 'i18n';
 import { getAppName } from 'config';
-import { UserApi } from 'api';
+import {
+    useSelector,
+    useDispatch
+} from "react-redux"
+import {
+    userSelector,
+    createUser
+} from 'redux/slices/user-slice';
 
 /**
  * interfaces and types.
@@ -31,6 +38,9 @@ interface LoginScreenProps {
  * A function component that shows a login screen
  */
 function LoginScreen(props: LoginScreenProps) {
+
+    const dispatch = useDispatch();
+    const { user } = useSelector(userSelector);
 
     const signIn = async () => {
         try {
@@ -82,12 +92,12 @@ function LoginScreen(props: LoginScreenProps) {
 
                 /**
                  * handle user response.
-                 * 
-                 * @TODO:
-                 * handle this in redux with "redux-toolkit".
                  */
-                const createdUser = await UserApi.createNewUser(user.name, user.email);
-                console.log('createdUser', createdUser);
+                dispatch(createUser(
+                    user.name,
+                    user.email,
+                    user.profilePicture
+                ));
             });
     };
 

@@ -18,7 +18,8 @@ class User extends Api {
      */
     createNewUser = async (
         userName: string,
-        email: string
+        email: string,
+        profilePhoto: string
     ): Promise<ApiTypes.CreateUserData> => {
 
         /**
@@ -28,7 +29,8 @@ class User extends Api {
             `${SHARED_VARIABLES.API_BASE_URL}/users/create_user`,
             {
                 user_name: userName,
-                email: email
+                email: email,
+                profile_picture: profilePhoto
             }
         );
 

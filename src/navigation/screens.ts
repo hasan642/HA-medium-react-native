@@ -1,4 +1,5 @@
 import { Navigation } from "react-native-navigation";
+import { withRedux } from "./providers";
 
 /**
  * import screens.
@@ -27,16 +28,19 @@ export const screens = {
 export function registerScreens() {
     Navigation.registerComponent(
         screens.HOME,
+        () => withRedux(HomeScreen),
         () => HomeScreen
     );
 
     Navigation.registerComponent(
         screens.SIDE_MENU,
+        () => withRedux(SideMenu),
         () => SideMenu
     );
 
     Navigation.registerComponent(
         screens.AUTH_SCREEN,
+        () => withRedux(AuthScreen),
         () => AuthScreen
     );
 };
