@@ -41,7 +41,6 @@ function LoginScreen(props: LoginScreenProps) {
 
     const dispatch = useDispatch();
     const { user } = useSelector(userSelector);
-    console.log({ user });
 
     const signIn = async () => {
         try {

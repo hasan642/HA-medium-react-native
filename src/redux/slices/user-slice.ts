@@ -37,7 +37,6 @@ const userSlice = createSlice({
             state.success = false;
         },
         setError: (state, { payload: error }: PayloadAction<string>) => {
-            console.log('errorerror', error);
             state.loading = false;
             state.error = error;
             state.success = false;
@@ -60,17 +59,13 @@ const {
     setUser
 } = userSlice.actions;
 
-
 /**
  * export all needed from userSlice.
- */
-
-/**
+ * 
  * 'selector' allows us to select a specific bit from store state,
  * * in this case we get a user state from store.
  */
 export const userSelector = (state: { userStore: UserState }) => state.userStore;
-
 export default userSlice.reducer;
 
 /**
