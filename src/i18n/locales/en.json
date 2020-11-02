@@ -2,6 +2,7 @@
     "common": {},
     "authScreen": {
         "joinTo": "Join to",
-        "continueWith": "Continue with ..."
+        "continueWith": "Continue with ...",
+        "noGServices": "You have no google services!"
     }
 }

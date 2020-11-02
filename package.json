@@ -8,6 +8,7 @@
     "s": "react-native start",
     "s-r": "react-native start --reset-cache",
     "d": "adb shell input keyevent 82",
+    "a-rv":"adb reverse tcp:9090 tcp:9090",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },

@@ -9,10 +9,6 @@ import {
 import { View as AnimatbleView } from 'react-native-animatable';
 import { TwitterLogin } from 'react-native-login-twitter';
 import {
-    GoogleSignin,
-    statusCodes,
-} from '@react-native-community/google-signin';
-import {
     SocialLogin,
     General as GeneralUtils
 } from 'utils';
@@ -42,24 +38,25 @@ function LoginScreen(props: LoginScreenProps) {
     const dispatch = useDispatch();
     const { user } = useSelector(userSelector);
 
-    const signIn = async () => {
-        try {
-            const has = await GoogleSignin.hasPlayServices();
-            console.log('dddd', has)
-            const userInfo = await GoogleSignin.signIn();
-            console.log('user is', userInfo);
-        } catch (error) {
-            console.log('error', error)
-            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-                // user cancelled the login flow
-            } else if (error.code === statusCodes.IN_PROGRESS) {
-                // operation (e.g. sign in) is in progress already
-            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-                // play services not available or outdated
-            } else {
-                // some other error happened
-            }
-        }
+    /**
+     * handle continue with google.
+     */
+    const continueWithGoogle = async () => {
+        SocialLogin.continueWithGoogle()
+            .then(({ user }) => {
+                if (user !== null) {
+
+                    /**
+                     * handle user response.
+                     */
+                    dispatch(createUser(
+                        user.name,
+                        user.email,
+                        user.photo
+                    ));
+
+                };
+            });
     };
 
     /**
@@ -101,6 +98,32 @@ function LoginScreen(props: LoginScreenProps) {
             });
     };
 
+    /**
+     * handle continuew with twitter.
+     */
+    const continueWithTwitter = () => {
+        SocialLogin.continueWithTwitter()
+            .then(user => {
+console.log('user',user)
+                /**
+                 * handle user response.
+                 */
+                dispatch(createUser(
+                    user.name,
+                    user.email,
+                    'image'
+                ));
+
+            });
+    };
+
+    /**
+     * navigate to app
+     */
+    const navigateToApp = () => {
+
+    };
+
     const AuthView = () => {
         return (
             <AnimatbleView
@@ -117,7 +140,7 @@ function LoginScreen(props: LoginScreenProps) {
 
                 <Button
                     icon={'google'}
-                    onPress={signIn}
+                    onPress={continueWithGoogle}
                     style={commonStyles.marginTop8}
                 >
                     {'Google'}
@@ -125,12 +148,7 @@ function LoginScreen(props: LoginScreenProps) {
 
                 <Button
                     icon={'twitter'}
-                    onPress={() => {
-                        TwitterLogin.logIn()
-                            .catch(error => {
-                                console.log('error in', error)
-                            })
-                    }}
+                    onPress={continueWithTwitter}
                     style={commonStyles.marginTop8}
                 >
                     {'Twitter'}

@@ -2,6 +2,7 @@
     "common": {},
     "authScreen": {
         "joinTo": "इसमें शामिल हो",
-        "continueWith": "जारी रखें ..."
+        "continueWith": "जारी रखें ...",
+        "noGServices": "आपके पास कोई Google सेवा नहीं है!"
     }
 }
