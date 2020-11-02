@@ -9,6 +9,16 @@ import {
 import General from "./general";
 import { GeneralApi } from "api";
 import { GetFBUserData } from "api/types";
+import {
+    GoogleSignin,
+    User as GoogleUser
+} from "@react-native-community/google-signin";
+import general from "./general";
+import { translate } from "i18n";
+import {
+    TwitterLogin,
+    User as TwitterUser
+} from "react-native-login-twitter";
 
 /**
  * A functoion to continue with FB.
@@ -60,7 +70,7 @@ async function continueWithFB(): Promise<GetFBUserData> {
                 cancelable: true
             }
         );
-        
+
         return {
             kind: 'REJECTED'
         };
@@ -84,6 +94,46 @@ async function continueWithFB(): Promise<GetFBUserData> {
 };
 
 /**
+ * A function helper that handles google signin.
+ */
+async function continueWithGoogle(): Promise<GoogleUser> {
+    try {
+
+        /**
+         * check if there is no "googlePlayServices".
+         */
+        const hasServices = await GoogleSignin.hasPlayServices();
+        if (!hasServices) {
+            general.showToast(translate('noGServices'));
+            return null;
+        };
+
+        /**
+         * get google user.
+         */
+        const user = await GoogleSignin.signIn();
+        return user;
+
+    } catch (e) {
+        console.log('error in continueWithGoogle', e);
+        return null;
+    };
+};
+
+/**
+ * A function helper that handles login with Twitter.
+ */
+async function continueWithTwitter(): Promise<TwitterUser> {
+    try {
+        const user = TwitterLogin.logIn();
+        return user;
+    } catch (e) {
+        console.log('error in continueWithTwitter', e);
+        return null;
+    };
+};
+
+/**
  * contsants.
  */
 const requestedPermissions = [
@@ -96,4 +146,6 @@ const requestedPermissions = [
  */
 export default {
     continueWithFB,
+    continueWithGoogle,
+    continueWithTwitter,
 };
