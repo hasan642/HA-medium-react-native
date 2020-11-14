@@ -78,18 +78,17 @@ export const createUser = (
 ) => {
     return async (dispatch: Dispatch<any>) => {
         try {
-            console.log('start');
-
+ 
             /**
              * enable loader.
              */
             dispatch(loadUser());
-            console.log('22222');
+      
             /**
              * create user api.
              */
             const createdUserResponse = await UserApi.createNewUser(name, email, profilePhoto);
-            console.log('createdUserResponse', createdUserResponse)
+
             /**
              * hanlde if not OK.
              */
