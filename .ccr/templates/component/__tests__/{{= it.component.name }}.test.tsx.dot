@@ -1,0 +1,18 @@
+/*********************************************************************************************************************
+ * File: {{= it.component.name }}.tsx
+ * Developed By Hasan Alawneh
+ * Email: halawneh595@gmail.com
+ * Date: {{= new Date().toJSON().slice(0,10)}}
+ * Desc: This file contains a test unit for {{= it.component.name }}.
+ *********************************************************************************************************************/
+
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+import {{= it.component.name}} from '../{{= it.component.name }}';
+
+describe('<{{= it.component.name}} />', () => {
+  beforeEach(() => {});
+  afterEach(() => {});
+
+  test('should ...', () => {});
+});

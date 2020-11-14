@@ -84,7 +84,7 @@ export const createUser = (
              * enable loader.
              */
             dispatch(loadUser());
- console.log('22222');
+            console.log('22222');
             /**
              * create user api.
              */
@@ -106,11 +106,7 @@ export const createUser = (
                 createdUserResponse.user
             );
 
-            /**
-             * "..." user bz transform it to pure js object from
-             * * "UserApiModel" objects.
-             */
-            dispatch(setUser({ ...createdUserResponse.user }));
+            dispatch(setUser(createdUserResponse.user));
 
         } catch (e) {
             dispatch(setError(e));

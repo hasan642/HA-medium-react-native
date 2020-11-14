@@ -1,0 +1,7 @@
+/*
+ * {{= it.component.name }} {{= it.settings.cssType || 'css'}} File
+*/
+
+.{{= it.component.name }} {
+    /* propertys here */
+}
