@@ -1,0 +1,10 @@
+/*********************************************************************************************************************
+ * File: {{= it.component.name }}.tsx
+ * Developed By Hasan Alawneh
+ * Email: h.alawneh@alsahabglobal.com
+ * Date: {{= new Date().toJSON().slice(0,10)}}
+ * Desc: This file for namespacing {{= it.component.name}} file.
+ * Copyright (c) - Waseet.net
+ *********************************************************************************************************************/
+
+export { default as {{= it.component.name}} } from './{{= it.component.name}}';

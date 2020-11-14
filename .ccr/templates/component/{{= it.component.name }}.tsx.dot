@@ -1,0 +1,33 @@
+/*********************************************************************************************************************
+ * File: {{= it.component.name }}.tsx
+ * Developed By Hasan Alawneh
+ * Email: h.alawneh@alsahabglobal.com
+ * Date: {{= new Date().toJSON().slice(0,10)}}
+ * Desc: File Description
+ * Copyright (c) - Waseet.net
+ *********************************************************************************************************************/
+
+import React from 'react';
+import { View } from 'react-native';
+{{? it.settings.css }}import styles from './styles';{{?}}
+
+/**
+ * interfaces and types
+ */
+interface {{= it.component.name}}Props {
+
+};
+
+/**
+ * A function component that shows the {{= it.component.name}} component.
+*/
+function {{= it.component.name}}(props: {{= it.component.name}}Props) {
+  return (<View {{? it.settings.css }}style={styles.container}{{?}}>
+
+  </View>);
+};
+
+/**
+ * export as default
+ */
+export default {{= it.component.name}};

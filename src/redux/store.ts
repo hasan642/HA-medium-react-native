@@ -13,6 +13,9 @@ const store = configureStore({
         userStore: userReducer,
 
     },
+    middleware: (defaultMiddleware) => defaultMiddleware({
+        serializableCheck: false
+    }),
 });
 
 /**
