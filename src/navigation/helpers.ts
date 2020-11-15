@@ -1,6 +1,7 @@
 /**
  * A function helpers for navigation.
  */
+
 import {
     Navigation,
     ImageSystemSource
@@ -13,7 +14,10 @@ import {
     color,
     responsiveFontSize
 } from 'theme';
-import { translate, isRTL } from "i18n";
+import {
+    translate,
+    isRTL
+} from "i18n";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 /**
@@ -27,6 +31,8 @@ interface NavigationIcons {
 /**
  * A function helper that loads and prepares the
  * * required icons image sources.
+ * 
+ * @TODO: save prepared icons in variable to call this function one time.
  */
 async function getNavIcons(): Promise<NavigationIcons> {
 
@@ -137,7 +143,7 @@ export async function setDefaultOptions() {
             translucent: true
         },
         layout: {
-            direction: 'ltr',
+            direction: 'locale',
             backgroundColor: color.light,
             orientation: ['portrait'],
         },
@@ -147,7 +153,6 @@ export async function setDefaultOptions() {
             noBorder: true,
             borderHeight: 0,
             backButton: {
-                title: translate('common.back'),
                 showTitle: false,
                 icon: icons.BACK_ICON
             },
