@@ -1,5 +1,7 @@
 {
-    "common": {},
+    "common": {
+        "back": "رجوع"
+    },
     "authScreen": {
         "joinTo": "انضم الى",
         "continueWith": "تابع بواسطة ...",

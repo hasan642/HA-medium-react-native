@@ -1,5 +1,7 @@
 {
-    "common": {},
+    "common": {
+        "back": "वापस"
+    },
     "authScreen": {
         "joinTo": "इसमें शामिल हो",
         "continueWith": "जारी रखें ...",

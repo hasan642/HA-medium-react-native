@@ -1,5 +1,7 @@
 {
-    "common": {},
+    "common": {
+        "back": "Back"
+    },
     "authScreen": {
         "joinTo": "Join to",
         "continueWith": "Continue with ...",
