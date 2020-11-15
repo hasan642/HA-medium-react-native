@@ -6,5 +6,9 @@
         "joinTo": "Join to",
         "continueWith": "Continue with ...",
         "noGServices": "You have no google services!"
+    },
+    "screens": {
+        "settings": "Settings",
+        "home": "Home"
     }
 }

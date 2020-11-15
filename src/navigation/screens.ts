@@ -4,7 +4,8 @@ import SideMenu from "./side-menu";
 import {
     HomeScreen,
     NotificationsScreen,
-    AuthScreen
+    AuthScreen,
+    SettingsScreen
 } from 'screens';
 
 /**
@@ -20,6 +21,7 @@ export const screens = {
     SIDE_MENU: `${prefix}.sideMenu`,
     AUTH_SCREEN: `${prefix}.authScreen`,
     NOTIFICATIONS_SCREEN: `${prefix}.notificationsScreen`,
+    SETTINGS_SCREEN: `${prefix}.settingsScreen`,
 };
 
 /**
@@ -47,6 +49,11 @@ export function registerScreens() {
     Navigation.registerComponent(
         screens.NOTIFICATIONS_SCREEN,
         () => NotificationsScreen
+    );
+
+    Navigation.registerComponent(
+        screens.SETTINGS_SCREEN,
+        () => SettingsScreen
     );
 };
 
