@@ -14,11 +14,9 @@ import {
     color,
     responsiveFontSize
 } from 'theme';
-import {
-    translate,
-    isRTL
-} from "i18n";
+import { isRTL } from "i18n";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { CENTER_STACK_SIDE_MENU } from "./contants";
 
 /**
  * interfaces and types.
@@ -77,7 +75,7 @@ export function goToApp() {
                 },
                 center: {
                     stack: {
-                        id: "CENTER_STACK",
+                        id: CENTER_STACK_SIDE_MENU,
                         children: [{
                             component: {
                                 id: screens.HOME_SCREEN,
@@ -159,6 +157,9 @@ export async function setDefaultOptions() {
         },
         sideMenu: {
             openGestureMode: 'entireScreen',
+            left: {
+                shouldStretchDrawer: true
+            }
         },
         popGesture: true
     })

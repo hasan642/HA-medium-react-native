@@ -4,7 +4,8 @@
  */
 const color = Object.freeze({
     light: '#FFF',
-    dark: '#000'
+    dark: '#000',
+    white: '#f7f5f5',
 });
 
 /**

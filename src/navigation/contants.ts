@@ -1,0 +1,1 @@
+export const CENTER_STACK_SIDE_MENU = 'CENTER_STACK';

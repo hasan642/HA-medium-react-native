@@ -24,15 +24,6 @@ export default function Home(props: HomeProps) {
                         props.componentId,
                         'NOTIFICATIONS_SCREEN'
                     )
-
-                    // StorageHelper.clearAll();
-                    // Navigation.mergeOptions(props.componentId, {
-                    //     sideMenu: {
-                    //         left: {
-                    //             visible: true
-                    //         }
-                    //     }
-                    // });
                 }}
             />
         </View>

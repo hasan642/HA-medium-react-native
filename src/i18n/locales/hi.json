@@ -6,5 +6,9 @@
         "joinTo": "इसमें शामिल हो",
         "continueWith": "जारी रखें ...",
         "noGServices": "आपके पास कोई Google सेवा नहीं है!"
+    },
+    "screens": {
+        "settings": "समायोजन",
+        "home": "घर"
     }
 }
