@@ -25,11 +25,6 @@ class User extends Api {
         /**
          * create response.
          */
-        console.log({
-            user_name: userName,
-            email: email,
-            profile_picture: profilePhoto
-        })
         const response = await this.post(
             `${SHARED_VARIABLES.API_BASE_URL}/users/create_user`,
             {
@@ -38,7 +33,7 @@ class User extends Api {
                 profile_picture: profilePhoto
             }
         );
-console.log('rs is',response)
+
         /**
          * handle if response is not ok.
          */

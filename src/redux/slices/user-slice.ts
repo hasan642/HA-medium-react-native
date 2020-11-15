@@ -13,6 +13,7 @@ import {
 } from "api";
 import { Dispatch } from "react";
 import storage from "utils/storage/storage";
+import { goToApp } from "navigation";
 
 /**
  * The initial state.
@@ -78,12 +79,12 @@ export const createUser = (
 ) => {
     return async (dispatch: Dispatch<any>) => {
         try {
- 
+
             /**
              * enable loader.
              */
             dispatch(loadUser());
-      
+
             /**
              * create user api.
              */
@@ -105,7 +106,15 @@ export const createUser = (
                 createdUserResponse.user
             );
 
+            /**
+             * save user to redux
+             */
             dispatch(setUser(createdUserResponse.user));
+
+            /**
+             * set root again.
+             */
+            goToApp();
 
         } catch (e) {
             dispatch(setError(e));

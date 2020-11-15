@@ -5,10 +5,12 @@
 import { Navigation } from "react-native-navigation";
 import {
     registerScreens,
-    setMainRoot,
-    setDefaultOptions
+    setDefaultOptions,
+    goToApp,
+    goToAuth
 } from "./src/navigation";
-import { init,SHARED_VARIABLES } from "config";
+import { init } from "config";
+import { StorageHelper } from "utils";
 
 /**
  * execute register screens function.
@@ -19,7 +21,7 @@ registerScreens();
  * "registerAppLaunchedListener" event.
  */
 Navigation.events().registerAppLaunchedListener(
-    () => {
+    async () => {
 
         /**
          * execute init function.
@@ -34,7 +36,12 @@ Navigation.events().registerAppLaunchedListener(
         /**
          * set main root.
          */
-        setMainRoot();
+        const isAuthinticated = await StorageHelper.get('@User') !== null;
+        if (isAuthinticated === true) {
+            goToApp();
+        } else {
+            goToAuth();
+        };
 
     }
 );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Button } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { StorageHelper } from 'utils';
 
 export default function Home(props: any) {
     return (
@@ -11,6 +12,7 @@ export default function Home(props: any) {
             <Button
                 title='ggg'
                 onPress={() => {
+                    StorageHelper.clearAll();
                     Navigation.mergeOptions(props.componentId, {
                         sideMenu: {
                             left: {
