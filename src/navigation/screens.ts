@@ -17,7 +17,7 @@ const prefix = 'com.medium';
  * screen names.
  */
 export const screens = {
-    HOME: `${prefix}.home`,
+    HOME_SCREEN: `${prefix}.home`,
     SIDE_MENU: `${prefix}.sideMenu`,
     AUTH_SCREEN: `${prefix}.authScreen`
 };
@@ -27,7 +27,7 @@ export const screens = {
  */
 export function registerScreens() {
     Navigation.registerComponent(
-        screens.HOME,
+        screens.HOME_SCREEN,
         () => withRedux(HomeScreen),
         () => HomeScreen
     );

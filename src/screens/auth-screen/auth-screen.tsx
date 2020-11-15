@@ -7,10 +7,9 @@ import {
     Text
 } from 'components';
 import { View as AnimatbleView } from 'react-native-animatable';
-import { TwitterLogin } from 'react-native-login-twitter';
 import {
     SocialLogin,
-    General as GeneralUtils
+    General as GeneralUtils,
 } from 'utils';
 import { translate } from 'i18n';
 import { getAppName } from 'config';
@@ -24,19 +23,14 @@ import {
 } from 'redux/slices/user-slice';
 
 /**
- * interfaces and types.
- */
-interface LoginScreenProps {
-
-};
-
-/**
  * A function component that shows a login screen
  */
-function LoginScreen(props: LoginScreenProps) {
+function AuthScreen() {
 
+    /**
+     * use dispatch.
+     */
     const dispatch = useDispatch();
-    const { user } = useSelector(userSelector);
 
     /**
      * handle continue with google.
@@ -95,6 +89,7 @@ function LoginScreen(props: LoginScreenProps) {
                     user.email,
                     user.profilePicture
                 ));
+                
             });
     };
 
@@ -104,7 +99,7 @@ function LoginScreen(props: LoginScreenProps) {
     const continueWithTwitter = () => {
         SocialLogin.continueWithTwitter()
             .then(user => {
-console.log('user',user)
+
                 /**
                  * handle user response.
                  */
@@ -181,7 +176,7 @@ console.log('user',user)
 /**
  * custom navigation options.
  */
-LoginScreen.options = {
+AuthScreen.options = {
     topBar: {
         visible: false
     }
@@ -190,4 +185,4 @@ LoginScreen.options = {
 /**
  * export as default.
  */
-export default LoginScreen;
+export default AuthScreen;
