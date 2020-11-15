@@ -64,4 +64,5 @@ export function init() {
      * set "i18n" config.
      */
     setI18nConfig();
+    
 };

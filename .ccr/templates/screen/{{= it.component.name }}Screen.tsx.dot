@@ -1,0 +1,34 @@
+/*********************************************************************************************************************
+ * File: {{= it.component.name }}Screen.tsx
+ * Developed By Hasan Alawneh
+ * Email: h.alawneh@alsahabglobal.com
+ * Date: {{= new Date().toJSON().slice(0,10)}}
+ * Desc: File Description
+ * Copyright (c) - Waseet.net
+ *********************************************************************************************************************/
+
+import * as React from 'react';
+import { View } from 'react-native';
+{{? it.settings.css }}import styles from './styles';{{?}}
+
+/**
+ * interfaces and types
+ */
+interface {{= it.component.name}}ScreenProps {
+
+};
+
+/**
+ * A function component that shows a {{= it.component.name}} screen
+ * @param props 
+ */
+const {{= it.component.name}}Screen = (props: {{= it.component.name}}ScreenProps) => {
+   return (<View {{? it.settings.css }}style={styles.container}{{?}}>
+
+  </View>);
+}
+
+/**
+ * export as default
+ */
+export default {{= it.component.name}}Screen;

@@ -53,3 +53,10 @@ export function setI18nConfig() {
     i18n.translations = { [languageTag]: translationGetters[languageTag]() };
     i18n.locale = languageTag;
 };
+
+/**
+ * detects if isRTL.
+ */
+export function isRTL() {
+    return I18nManager.isRTL;
+};

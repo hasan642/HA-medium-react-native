@@ -1,9 +1,16 @@
 import React from 'react';
 import { View, Button } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import { StorageHelper } from 'utils';
+import { NavigationComponentProps } from 'react-native-navigation';
+import { goTo } from 'navigation';
 
-export default function Home(props: any) {
+/**
+ * type checking.
+ */
+interface HomeProps extends NavigationComponentProps {
+
+};
+
+export default function Home(props: HomeProps) {
     return (
         <View style={{
             backgroundColor: 'red',
@@ -12,14 +19,20 @@ export default function Home(props: any) {
             <Button
                 title='ggg'
                 onPress={() => {
-                    StorageHelper.clearAll();
-                    Navigation.mergeOptions(props.componentId, {
-                        sideMenu: {
-                            left: {
-                                visible: true
-                            }
-                        }
-                    });
+
+                    goTo(
+                        props.componentId,
+                        'NOTIFICATIONS_SCREEN'
+                    )
+
+                    // StorageHelper.clearAll();
+                    // Navigation.mergeOptions(props.componentId, {
+                    //     sideMenu: {
+                    //         left: {
+                    //             visible: true
+                    //         }
+                    //     }
+                    // });
                 }}
             />
         </View>

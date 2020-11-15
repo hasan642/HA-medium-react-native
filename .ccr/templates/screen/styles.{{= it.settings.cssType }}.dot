@@ -1,0 +1,12 @@
+import { StyleSheet } from 'react-native';
+
+/**
+ * screen style lives here
+ */
+const styles = StyleSheet.create({
+    container: {
+
+    },
+});
+
+export default styles;

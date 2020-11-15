@@ -1,12 +1,11 @@
 import { Navigation } from "react-native-navigation";
 import { withRedux } from "./providers";
-
-/**
- * import screens.
- */
-import { HomeScreen } from 'screens';
 import SideMenu from "./side-menu";
-import { AuthScreen } from 'screens';
+import {
+    HomeScreen,
+    NotificationsScreen,
+    AuthScreen
+} from 'screens';
 
 /**
  * constants.
@@ -19,7 +18,8 @@ const prefix = 'com.medium';
 export const screens = {
     HOME_SCREEN: `${prefix}.home`,
     SIDE_MENU: `${prefix}.sideMenu`,
-    AUTH_SCREEN: `${prefix}.authScreen`
+    AUTH_SCREEN: `${prefix}.authScreen`,
+    NOTIFICATIONS_SCREEN: `${prefix}.notificationsScreen`,
 };
 
 /**
@@ -43,4 +43,14 @@ export function registerScreens() {
         () => withRedux(AuthScreen),
         () => AuthScreen
     );
+
+    Navigation.registerComponent(
+        screens.NOTIFICATIONS_SCREEN,
+        () => NotificationsScreen
+    );
 };
+
+/**
+ * export type of screens.
+ */
+export type Screens = keyof typeof screens;
