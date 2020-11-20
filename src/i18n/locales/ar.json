@@ -9,9 +9,7 @@
     },
     "screens": {
         "settings": "الإعدادات",
-        "home": "الرئيسية"
-    },
-    "settingsScreen": {
+        "home": "الرئيسية",
         "profile": "الملف الشخصي"
     }
 }

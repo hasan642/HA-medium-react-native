@@ -2,9 +2,9 @@ import { Navigation } from "react-native-navigation";
 import { withRedux } from "./providers";
 import {
     HomeScreen,
-    NotificationsScreen,
     AuthScreen,
-    SettingsScreen
+    SettingsScreen,
+    ProfileScreen
 } from 'screens';
 
 /**
@@ -18,8 +18,8 @@ const prefix = 'com.medium';
 export const screens = {
     HOME_SCREEN: `${prefix}.home`,
     AUTH_SCREEN: `${prefix}.authScreen`,
-    NOTIFICATIONS_SCREEN: `${prefix}.notificationsScreen`,
     SETTINGS_SCREEN: `${prefix}.settingsScreen`,
+    PROFILE_SCREEN: `${prefix}.profileScreen`,
 };
 
 /**
@@ -39,13 +39,13 @@ export function registerScreens() {
     );
 
     Navigation.registerComponent(
-        screens.NOTIFICATIONS_SCREEN,
-        () => NotificationsScreen
+        screens.SETTINGS_SCREEN,
+        () => SettingsScreen
     );
 
     Navigation.registerComponent(
-        screens.SETTINGS_SCREEN,
-        () => SettingsScreen
+        screens.PROFILE_SCREEN,
+        () => ProfileScreen
     );
 };
 

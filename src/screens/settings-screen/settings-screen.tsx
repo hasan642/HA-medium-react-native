@@ -1,13 +1,17 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
-import { ListItem, Header } from 'components';
+import {
+    ScrollView,
+    View
+} from 'react-native';
+import {
+    Header,
+    Text
+} from 'components';
 import styles from './styles';
 import { translate } from 'i18n';
-import {
-    NavigationComponentProps,
-    Options
-} from 'react-native-navigation';
+import { NavigationComponentProps } from 'react-native-navigation';
 import { commonStyles } from 'theme';
+import deviceInfoModule from 'react-native-device-info';
 
 /**
  * Type checking.
@@ -35,12 +39,12 @@ function SettingsScreen({ componentId }: SettingsScreenProps) {
             />
 
             <ScrollView style={commonStyles.flex}>
-                <ListItem
-                    title={translate('settingsScreen.profile')}
-                    onPress={handlePressProfile}
-                />
+
             </ScrollView>
 
+            <Text style={styles.footerTxt}>
+                {deviceInfoModule.getReadableVersion()}
+            </Text>
 
         </View>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Button } from 'react-native';
 import { NavigationComponentProps } from 'react-native-navigation';
-import { goTo } from 'navigation';
 import { color } from 'theme';
 import { translate } from 'i18n';
 import { Header } from 'components';
@@ -26,11 +25,6 @@ function HomeScreen(props: HomeProps) {
             <Button
                 title='ggg'
                 onPress={() => {
-
-                    goTo(
-                        props.componentId,
-                        'NOTIFICATIONS_SCREEN'
-                    )
                 }}
             />
         </View>
