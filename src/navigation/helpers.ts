@@ -1,10 +1,7 @@
-/**
- * A function helpers for navigation.
- */
-
 import {
     Navigation,
-    ImageSystemSource
+    ImageSystemSource,
+    LayoutTabsChildren
 } from "react-native-navigation";
 import {
     screens,
@@ -16,14 +13,19 @@ import {
 } from 'theme';
 import { isRTL } from "i18n";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { CENTER_STACK_SIDE_MENU } from "./contants";
+import AntDesignIcons from 'react-native-vector-icons/AntDesign';
+import {
+    BOTTOM_TABS_ID,
+    AUTH_STACK_ID
+} from "./contants";
 
 /**
  * interfaces and types.
  */
 interface NavigationIcons {
-    MENU_ICON: ImageSystemSource;
     BACK_ICON: ImageSystemSource;
+    HOME_ICON: ImageSystemSource;
+    SETTING_ICON: ImageSystemSource;
 };
 
 /**
@@ -39,13 +41,18 @@ async function getNavIcons(): Promise<NavigationIcons> {
      */
     const icons = await Promise.all([
         Ionicons.getImageSource(
-            'md-menu',
-            responsiveFontSize(24),
-        ),
-
-        Ionicons.getImageSource(
             isRTL() ? 'ios-chevron-forward' : 'ios-chevron-back',
             responsiveFontSize(4),
+        ),
+
+        AntDesignIcons.getImageSource(
+            'home',
+            responsiveFontSize(3.5),
+        ),
+
+        AntDesignIcons.getImageSource(
+            'setting',
+            responsiveFontSize(3.5),
         ),
     ]);
 
@@ -53,8 +60,9 @@ async function getNavIcons(): Promise<NavigationIcons> {
      * return icons.
      */
     return {
-        MENU_ICON: icons[0],
-        BACK_ICON: icons[1],
+        BACK_ICON: icons[0],
+        HOME_ICON: icons[1],
+        SETTING_ICON: icons[2],
     };
 
 };
@@ -62,28 +70,24 @@ async function getNavIcons(): Promise<NavigationIcons> {
 /**
  * A function helper that goes to app.
  */
-export function goToApp() {
+export async function goToApp() {
+
+    /**
+     * grap icons from loaded navigation icons.
+     */
+    const {
+        HOME_ICON,
+        SETTING_ICON
+    } = await getNavIcons();
+
     Navigation.setRoot({
         root: {
-            sideMenu: {
-                id: "SIDE_MENU",
-                left: {
-                    component: {
-                        id: screens.SIDE_MENU,
-                        name: screens.SIDE_MENU
-                    }
-                },
-                center: {
-                    stack: {
-                        id: CENTER_STACK_SIDE_MENU,
-                        children: [{
-                            component: {
-                                id: screens.HOME_SCREEN,
-                                name: screens.HOME_SCREEN
-                            }
-                        }]
-                    }
-                }
+            bottomTabs: {
+                id: BOTTOM_TABS_ID,
+                children: [
+                    createTabStack('HOME_SCREEN', HOME_ICON),
+                    createTabStack('SETTINGS_SCREEN', SETTING_ICON),
+                ]
             }
         }
     });
@@ -96,7 +100,7 @@ export function goToAuth() {
     Navigation.setRoot({
         root: {
             stack: {
-                id: "Auth",
+                id: AUTH_STACK_ID,
                 children: [{
                     component: {
                         id: screens.AUTH_SCREEN,
@@ -131,9 +135,7 @@ export function goTo(
 /**
  * A function helper that set default options for navigation.
  */
-export async function setDefaultOptions() {
-    const icons = await getNavIcons();
-
+export function setDefaultOptions() {
     Navigation.setDefaultOptions({
         statusBar: {
             style: 'dark',
@@ -142,25 +144,53 @@ export async function setDefaultOptions() {
         },
         layout: {
             direction: 'locale',
-            backgroundColor: color.light,
             orientation: ['portrait'],
         },
         topBar: {
+            visible: false
+        },
+        bottomTabs: {
             animate: true,
             drawBehind: false,
-            noBorder: true,
-            borderHeight: 0,
-            backButton: {
-                showTitle: false,
-                icon: icons.BACK_ICON
-            },
+            hideShadow: false,
+            elevation: 1,
+            hideOnScroll: true
         },
-        sideMenu: {
-            openGestureMode: 'entireScreen',
-            left: {
-                shouldStretchDrawer: true
+        bottomTab: {
+            animateBadge: true,
+            selectTabOnPress: true,
+            selectedIconColor: color.dark,
+            iconColor: color.silver,
+            disableIconTint: true,
+            iconInsets: {
+                top: 4
             }
         },
-        popGesture: true
+        popGesture: true,
     })
+};
+
+/**
+ * Creates tab stack.
+ */
+export function createTabStack(
+    screenName: Screens,
+    icon: ImageSystemSource,
+): LayoutTabsChildren {
+    return {
+        stack: {
+            id: screens.HOME_SCREEN,
+            children: [
+                {
+                    component: {
+                        id: screens[screenName],
+                        name: screens[screenName]
+                    }
+                }
+            ],
+            options: {
+                bottomTab: { icon }
+            }
+        }
+    }
 };

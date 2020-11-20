@@ -10,5 +10,8 @@
     "screens": {
         "settings": "समायोजन",
         "home": "घर"
+    },
+    "settingsScreen": {
+        "profile": "प्रोफ़ाइल"
     }
 }

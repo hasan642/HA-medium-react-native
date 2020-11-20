@@ -1,6 +1,5 @@
 import { Navigation } from "react-native-navigation";
 import { withRedux } from "./providers";
-import SideMenu from "./side-menu";
 import {
     HomeScreen,
     NotificationsScreen,
@@ -18,7 +17,6 @@ const prefix = 'com.medium';
  */
 export const screens = {
     HOME_SCREEN: `${prefix}.home`,
-    SIDE_MENU: `${prefix}.sideMenu`,
     AUTH_SCREEN: `${prefix}.authScreen`,
     NOTIFICATIONS_SCREEN: `${prefix}.notificationsScreen`,
     SETTINGS_SCREEN: `${prefix}.settingsScreen`,
@@ -32,12 +30,6 @@ export function registerScreens() {
         screens.HOME_SCREEN,
         () => withRedux(HomeScreen),
         () => HomeScreen
-    );
-
-    Navigation.registerComponent(
-        screens.SIDE_MENU,
-        () => withRedux(SideMenu),
-        () => SideMenu
     );
 
     Navigation.registerComponent(

@@ -10,5 +10,8 @@
     "screens": {
         "settings": "Settings",
         "home": "Home"
+    },
+    "settingsScreen": {
+        "profile": "Profile"
     }
 }
