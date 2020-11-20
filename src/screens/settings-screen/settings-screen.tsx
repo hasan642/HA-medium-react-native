@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     ScrollView,
     View
 } from 'react-native';
 import {
     Header,
-    Text
+    Text,
+    ListItem
 } from 'components';
 import styles from './styles';
 import { translate } from 'i18n';
 import { NavigationComponentProps } from 'react-native-navigation';
 import { commonStyles } from 'theme';
 import deviceInfoModule from 'react-native-device-info';
+import { StorageHelper } from 'utils';
+import { goToAuth } from 'navigation';
+import { Switch } from 'react-native-paper';
 
 /**
  * Type checking.
@@ -26,10 +30,25 @@ interface SettingsScreenProps extends NavigationComponentProps {
 function SettingsScreen({ componentId }: SettingsScreenProps) {
 
     /**
-     * Handles profile 
+     * state.
      */
-    const handlePressProfile = () => {
+    const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
 
+    /**
+     * Handles logout user.
+     */
+    const handleLogout = () => {
+        StorageHelper.clear('@User')
+            .then(_ => {
+                goToAuth();
+            });
+    };
+
+    /**
+     * Handles chnaging dark mode.
+     */
+    const handleChangeDarkMode = (nextVal: boolean) => {
+        setIsDarkModeEnabled(nextVal);
     };
 
     return (
@@ -39,13 +58,33 @@ function SettingsScreen({ componentId }: SettingsScreenProps) {
             />
 
             <ScrollView style={commonStyles.flex}>
+                <ListItem
+                    title={translate('settingsScreen.notifications')}
+                    rightIcon={<Switch
+                        value={isDarkModeEnabled}
+                        onValueChange={handleChangeDarkMode}
+                    />}
+                />
 
+                <ListItem
+                    title={translate('settingsScreen.darkMode')}
+                    rightIcon={<Switch
+                        value={isDarkModeEnabled}
+                        onValueChange={handleChangeDarkMode}
+                    />}
+                />
+
+                <ListItem
+                    leftIcon='logout'
+                    leftPaperIcon
+                    title={translate('settingsScreen.logout')}
+                    onPress={handleLogout}
+                />
             </ScrollView>
 
             <Text style={styles.footerTxt}>
                 {deviceInfoModule.getReadableVersion()}
             </Text>
-
         </View>
     );
 };
