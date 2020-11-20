@@ -11,7 +11,6 @@ import {
     color,
     responsiveFontSize
 } from 'theme';
-import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 import {
     BOTTOM_TABS_ID,
     AUTH_STACK_ID,
@@ -19,6 +18,8 @@ import {
     SETTINGS_STACK_ID,
     PROFILE_STACK_ID
 } from "./contants";
+import ADIcons from 'react-native-vector-icons/AntDesign';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 /**
  * interfaces and types.
@@ -26,6 +27,7 @@ import {
 interface NavigationIcons {
     HOME_ICON: ImageSystemSource;
     SETTINGS_ICON: ImageSystemSource;
+    PROFILE_ICON: ImageSystemSource;
 };
 
 /**
@@ -40,13 +42,18 @@ async function getNavIcons(): Promise<NavigationIcons> {
      * load icons.
      */
     const icons = await Promise.all([
-        AntDesignIcons.getImageSource(
+        ADIcons.getImageSource(
             'home',
             responsiveFontSize(3.5),
         ),
 
-        AntDesignIcons.getImageSource(
+        ADIcons.getImageSource(
             'setting',
+            responsiveFontSize(3.5),
+        ),
+
+        FAIcon.getImageSource(
+            'user-o',
             responsiveFontSize(3.5),
         ),
     ]);
@@ -57,6 +64,7 @@ async function getNavIcons(): Promise<NavigationIcons> {
     return {
         HOME_ICON: icons[0],
         SETTINGS_ICON: icons[1],
+        PROFILE_ICON: icons[2],
     };
 
 };
@@ -71,7 +79,8 @@ export async function goToApp() {
      */
     const {
         HOME_ICON,
-        SETTINGS_ICON
+        SETTINGS_ICON,
+        PROFILE_ICON
     } = await getNavIcons();
 
     Navigation.setRoot({
@@ -87,7 +96,7 @@ export async function goToApp() {
                     createTabStack(
                         PROFILE_STACK_ID,
                         'SETTINGS_SCREEN',
-                        SETTINGS_ICON
+                        PROFILE_ICON
                     ),
                     createTabStack(
                         SETTINGS_STACK_ID,
