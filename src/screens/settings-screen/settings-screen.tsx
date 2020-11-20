@@ -19,7 +19,7 @@ interface SettingsScreenProps extends NavigationComponentProps {
 /**
  * A function component that shows a settings screen.
  */
-const SettingsScreen = ({ componentId }: SettingsScreenProps) => {
+function SettingsScreen({ componentId }: SettingsScreenProps) {
 
     /**
      * Handles profile 

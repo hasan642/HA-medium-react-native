@@ -14,7 +14,10 @@ import {
 import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 import {
     BOTTOM_TABS_ID,
-    AUTH_STACK_ID
+    AUTH_STACK_ID,
+    HOME_STACK_ID,
+    SETTINGS_STACK_ID,
+    PROFILE_STACK_ID
 } from "./contants";
 
 /**
@@ -22,7 +25,7 @@ import {
  */
 interface NavigationIcons {
     HOME_ICON: ImageSystemSource;
-    SETTING_ICON: ImageSystemSource;
+    SETTINGS_ICON: ImageSystemSource;
 };
 
 /**
@@ -53,7 +56,7 @@ async function getNavIcons(): Promise<NavigationIcons> {
      */
     return {
         HOME_ICON: icons[0],
-        SETTING_ICON: icons[1],
+        SETTINGS_ICON: icons[1],
     };
 
 };
@@ -68,7 +71,7 @@ export async function goToApp() {
      */
     const {
         HOME_ICON,
-        SETTING_ICON
+        SETTINGS_ICON
     } = await getNavIcons();
 
     Navigation.setRoot({
@@ -76,8 +79,21 @@ export async function goToApp() {
             bottomTabs: {
                 id: BOTTOM_TABS_ID,
                 children: [
-                    createTabStack('HOME_SCREEN', HOME_ICON),
-                    createTabStack('SETTINGS_SCREEN', SETTING_ICON),
+                    createTabStack(
+                        HOME_STACK_ID,
+                        'HOME_SCREEN',
+                        HOME_ICON
+                    ),
+                    createTabStack(
+                        PROFILE_STACK_ID,
+                        'SETTINGS_SCREEN',
+                        SETTINGS_ICON
+                    ),
+                    createTabStack(
+                        SETTINGS_STACK_ID,
+                        'SETTINGS_SCREEN',
+                        SETTINGS_ICON
+                    ),
                 ]
             }
         }
@@ -165,12 +181,13 @@ export function setDefaultOptions() {
  * Creates tab stack.
  */
 export function createTabStack(
+    stackId: string,
     screenName: Screens,
     icon: ImageSystemSource,
 ): LayoutTabsChildren {
     return {
         stack: {
-            id: screens.HOME_SCREEN,
+            id: stackId,
             children: [
                 {
                     component: {
