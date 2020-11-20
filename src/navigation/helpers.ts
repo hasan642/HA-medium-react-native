@@ -11,8 +11,6 @@ import {
     color,
     responsiveFontSize
 } from 'theme';
-import { isRTL } from "i18n";
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 import {
     BOTTOM_TABS_ID,
@@ -23,7 +21,6 @@ import {
  * interfaces and types.
  */
 interface NavigationIcons {
-    BACK_ICON: ImageSystemSource;
     HOME_ICON: ImageSystemSource;
     SETTING_ICON: ImageSystemSource;
 };
@@ -40,11 +37,6 @@ async function getNavIcons(): Promise<NavigationIcons> {
      * load icons.
      */
     const icons = await Promise.all([
-        Ionicons.getImageSource(
-            isRTL() ? 'ios-chevron-forward' : 'ios-chevron-back',
-            responsiveFontSize(4),
-        ),
-
         AntDesignIcons.getImageSource(
             'home',
             responsiveFontSize(3.5),
@@ -60,9 +52,8 @@ async function getNavIcons(): Promise<NavigationIcons> {
      * return icons.
      */
     return {
-        BACK_ICON: icons[0],
-        HOME_ICON: icons[1],
-        SETTING_ICON: icons[2],
+        HOME_ICON: icons[0],
+        SETTING_ICON: icons[1],
     };
 
 };

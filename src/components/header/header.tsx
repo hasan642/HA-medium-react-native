@@ -19,7 +19,7 @@ function Header({
 }: HeaderProps) {
     return (
         <Appbar.Header
-        style={styles.header}
+            style={styles.header}
         >
 
             {
