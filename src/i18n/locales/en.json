@@ -9,9 +9,7 @@
     },
     "screens": {
         "settings": "Settings",
-        "home": "Home"
-    },
-    "settingsScreen": {
+        "home": "Home",
         "profile": "Profile"
     }
 }

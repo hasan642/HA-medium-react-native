@@ -9,9 +9,7 @@
     },
     "screens": {
         "settings": "समायोजन",
-        "home": "घर"
-    },
-    "settingsScreen": {
+        "home": "घर",
         "profile": "प्रोफ़ाइल"
     }
 }

@@ -95,7 +95,7 @@ export async function goToApp() {
                     ),
                     createTabStack(
                         PROFILE_STACK_ID,
-                        'SETTINGS_SCREEN',
+                        'PROFILE_SCREEN',
                         PROFILE_ICON
                     ),
                     createTabStack(
