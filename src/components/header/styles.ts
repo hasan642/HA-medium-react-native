@@ -2,10 +2,12 @@ import { StyleSheet } from 'react-native';
 import { color } from 'theme';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: color.offWhite
-    },
+    header: {
+        backgroundColor: color.light,
+        elevation: 0.8,
+        borderBottomWidth: 0.5,
+        borderBottomColor: color.silver
+    }
 });
 
 /**
