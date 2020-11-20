@@ -7,6 +7,11 @@
         "continueWith": "Continue with ...",
         "noGServices": "You have no google services!"
     },
+    "settingsScreen": {
+        "darkMode": "Dark mode",
+        "notifications": "Notifications",
+        "logout": "Logout"
+    },
     "screens": {
         "settings": "Settings",
         "home": "Home",

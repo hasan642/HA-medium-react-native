@@ -7,6 +7,11 @@
         "continueWith": "تابع بواسطة ...",
         "noGServices": "خدمات جوجل غير متوفرة لديك!"
     },
+    "settingsScreen": {
+        "darkMode": "الوضع الليلي",
+        "notifications": "الإشعارات",
+        "logout": "تسجيل الخروج"
+    },
     "screens": {
         "settings": "الإعدادات",
         "home": "الرئيسية",

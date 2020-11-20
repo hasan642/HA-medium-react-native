@@ -7,6 +7,11 @@
         "continueWith": "जारी रखें ...",
         "noGServices": "आपके पास कोई Google सेवा नहीं है!"
     },
+    "settingsScreen": {
+        "darkMode": "डार्क मोड",
+        "notifications": "सूचनाएं",
+        "logout": "लॉग आउट"
+    },
     "screens": {
         "settings": "समायोजन",
         "home": "घर",
