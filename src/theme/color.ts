@@ -10,7 +10,8 @@ const color = Object.freeze({
     transparent: 'transparent',
     offWhite: '#ececec',
     mineShaft: '#3d3d3d',
-    boulder: '#757575'
+    boulder: '#757575',
+    emerald: '#55C65A',
 });
 
 /**

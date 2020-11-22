@@ -6,8 +6,13 @@ import styles from './styles';
  * type checking.
  */
 interface HeaderProps {
-    handleGoBack?: () => void;
     title: string;
+
+    /**
+     * an optional props.
+     */
+    handleGoBack?: () => void;
+    children?: JSX.Element;
 };
 
 /**
@@ -15,7 +20,8 @@ interface HeaderProps {
  */
 function Header({
     handleGoBack,
-    title
+    title,
+    children
 }: HeaderProps) {
     return (
         <Appbar.Header
@@ -29,7 +35,12 @@ function Header({
                 />)
             }
 
-            <Appbar.Content title={title} />
+            <Appbar.Content
+                title={title}
+                titleStyle={styles.titleStyle}
+            />
+
+            {children}
         </Appbar.Header>
     );
 };

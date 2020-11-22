@@ -155,6 +155,15 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -423,6 +432,10 @@ PODS:
     - React-Core
   - RNDeviceInfo (7.0.2):
     - React-Core
+  - RNFastImage (8.3.4):
+    - React-Core
+    - SDWebImage (~> 5.8)
+    - SDWebImageWebPCoder (~> 0.6.1)
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
@@ -430,6 +443,12 @@ PODS:
     - React-Core
   - RNVectorIcons (7.1.0):
     - React
+  - SDWebImage (5.9.4):
+    - SDWebImage/Core (= 5.9.4)
+  - SDWebImage/Core (5.9.4)
+  - SDWebImageWebPCoder (0.6.1):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.7)
   - Toast (4.0.0)
   - TwitterCore (3.2.0)
   - TwitterKit5 (5.2.0):
@@ -492,6 +511,7 @@ DEPENDENCIES:
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -524,9 +544,12 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - libwebp
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
+    - SDWebImage
+    - SDWebImageWebPCoder
     - Toast
     - TwitterCore
     - TwitterKit5
@@ -595,6 +618,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNFastImage:
+    :path: "../node_modules/react-native-fast-image"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-community/google-signin"
   RNLocalize:
@@ -635,6 +660,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
@@ -664,9 +690,12 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: 65025dab27b404053678593b2450ed7a022e3173
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNDeviceInfo: e1d82a27d0c1ea6278e3b141784dc38e51fc90f4
+  RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
+  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
+  SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit5: 64095dfefcf39be2355711ef27112d55e340d90e

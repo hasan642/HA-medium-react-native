@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
         elevation: 0.8,
         borderBottomWidth: 0.5,
         borderBottomColor: color.silver
+    },
+    titleStyle: {
+        fontWeight: 'bold'
     }
 });
 
