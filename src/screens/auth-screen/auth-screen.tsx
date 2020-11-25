@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 import { commonStyles } from 'theme';
 import {
     Button,
-    Text
+    Text,
+    Loader
 } from 'components';
 import { View as AnimatbleView } from 'react-native-animatable';
 import {
@@ -14,8 +15,8 @@ import {
 import { translate } from 'i18n';
 import { getAppName } from 'config';
 import {
-    useSelector,
-    useDispatch
+    useDispatch,
+    useSelector
 } from "react-redux"
 import {
     userSelector,
@@ -26,6 +27,13 @@ import {
  * A function component that shows a login screen
  */
 function AuthScreen() {
+
+    /**
+     * get data from redux.
+     */
+    const {
+        loading
+    } = useSelector(userSelector);
 
     /**
      * use dispatch.
@@ -89,7 +97,7 @@ function AuthScreen() {
                     user.email,
                     user.profilePicture
                 ));
-                
+
             });
     };
 
@@ -119,38 +127,41 @@ function AuthScreen() {
 
     };
 
-    const AuthView = () => {
-        return (
-            <AnimatbleView
-                animation='bounceInLeft'
-                delay={600}
-                style={styles.btns}
-            >
-                <Button
-                    icon={'facebook'}
-                    onPress={continueWithFB}
+    const AuthView = useCallback(
+        () => {
+            return (
+                <AnimatbleView
+                    animation='bounceInLeft'
+                    delay={600}
+                    style={styles.btns}
                 >
-                    {'Facebook'}
-                </Button>
+                    <Button
+                        icon={'facebook'}
+                        onPress={continueWithFB}
+                    >
+                        {'Facebook'}
+                    </Button>
 
-                <Button
-                    icon={'google'}
-                    onPress={continueWithGoogle}
-                    style={commonStyles.marginTop8}
-                >
-                    {'Google'}
-                </Button>
+                    <Button
+                        icon={'google'}
+                        onPress={continueWithGoogle}
+                        style={commonStyles.marginTop8}
+                    >
+                        {'Google'}
+                    </Button>
 
-                <Button
-                    icon={'twitter'}
-                    onPress={continueWithTwitter}
-                    style={commonStyles.marginTop8}
-                >
-                    {'Twitter'}
-                </Button>
-            </AnimatbleView>
-        );
-    }
+                    <Button
+                        icon={'twitter'}
+                        onPress={continueWithTwitter}
+                        style={commonStyles.marginTop8}
+                    >
+                        {'Twitter'}
+                    </Button>
+                </AnimatbleView>
+            );
+        },
+        []
+    )
 
     return (
         <View style={styles.container}>
@@ -169,6 +180,8 @@ function AuthScreen() {
             </AnimatbleView>
 
             <AuthView />
+
+            {loading && <Loader />}
         </View>
     );
 };

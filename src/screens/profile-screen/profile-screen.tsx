@@ -18,6 +18,7 @@ import {
     Title
 } from 'react-native-paper';
 import { commonStyles } from 'theme';
+import { showModal } from 'navigation';
 
 /**
  * type checking.
@@ -44,7 +45,9 @@ function ProfileScreen(props: ProfileScreenProps) {
     const [userProfileCardHeight, setUserProfileCardHeight] = useState<number>(0);
 
     const handleEditProfile = () => {
-
+        showModal(
+            'UPDATE_PROFILE'
+        );
     };
 
     const handleCameraPress = () => {

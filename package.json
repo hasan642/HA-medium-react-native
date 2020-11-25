@@ -26,6 +26,7 @@
     "react-native-dotenv": "^0.2.0",
     "react-native-fast-image": "^8.3.4",
     "react-native-fbsdk": "^2.0.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.3",
     "react-native-localize": "^1.4.2",
     "react-native-login-twitter": "^3.0.4",
     "react-native-navigation": "^7.1.0",

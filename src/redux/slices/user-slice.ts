@@ -70,7 +70,7 @@ export const userSelector = (state: { userStore: UserState }) => state.userStore
 export default userSlice.reducer;
 
 /**
- * user actions.
+ * Craete new user.
  */
 export const createUser = (
     name: string,
@@ -115,6 +115,19 @@ export const createUser = (
              * set root again.
              */
             goToApp();
+
+        } catch (e) {
+            dispatch(setError(e));
+        };
+    };
+};
+
+/**
+ * Update an user by id.
+ */
+export const updateUser = () => {
+    return async (dispatch: Dispatch<any>) => {
+        try {
 
         } catch (e) {
             dispatch(setError(e));

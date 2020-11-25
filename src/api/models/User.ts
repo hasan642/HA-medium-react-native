@@ -11,6 +11,7 @@ export interface UserProps {
     email: string;
     updatedAt: number;
     subscription?: UserSubscription;
+    bio?: string;
 };
 
 /**
@@ -26,6 +27,7 @@ class User {
     email: '';
     updatedAt: 0;
     subscription: null;
+    bio?: string = '';
 
     constructor(obj: UserProps) {
         for (let key in obj) {

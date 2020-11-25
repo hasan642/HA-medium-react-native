@@ -3,7 +3,7 @@ import { View, Button } from 'react-native';
 import { NavigationComponentProps } from 'react-native-navigation';
 import { color } from 'theme';
 import { translate } from 'i18n';
-import { Header } from 'components';
+import { Header, Loader } from 'components';
 
 /**
  * type checking.
