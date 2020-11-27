@@ -9,7 +9,8 @@ import {
     Header,
     Image,
     Icon,
-    Text
+    Text,
+    Loader
 } from 'components';
 import { translate } from 'i18n';
 import {
@@ -19,6 +20,8 @@ import {
 } from 'react-native-paper';
 import { commonStyles } from 'theme';
 import { showModal } from 'navigation';
+import { useSelector } from 'react-redux';
+import { userSelector } from 'redux/slices';
 
 /**
  * type checking.
@@ -28,10 +31,14 @@ interface ProfileScreenProps extends NavigationComponentProps {
 };
 interface CoverPhotoProps {
     onCameraPress: () => void;
+    coverProfilePictureUri: string;
 };
 interface UserProfileCardProps {
     onLayout: (e: LayoutChangeEvent) => void;
     height: number;
+    profilePictureUri: string;
+    name: string;
+    bio: string;
 };
 
 /**
@@ -40,16 +47,28 @@ interface UserProfileCardProps {
 function ProfileScreen(props: ProfileScreenProps) {
 
     /**
+     * get data from redux.
+     */
+    const {
+        loading,
+        user
+    } = useSelector(userSelector);
+    
+    /**
      * state.
      */
     const [userProfileCardHeight, setUserProfileCardHeight] = useState<number>(0);
 
+    /**
+     * Handles edit profile.
+     */
     const handleEditProfile = () => {
-        showModal(
-            'UPDATE_PROFILE'
-        );
+        showModal('UPDATE_PROFILE');
     };
 
+    /**
+     * Handles camera press.
+     */
     const handleCameraPress = () => {
         console.log('fff')
     };
@@ -73,18 +92,24 @@ function ProfileScreen(props: ProfileScreenProps) {
             </Header>
 
             <CoverPhoto
+                coverProfilePictureUri={user.coverPhoto}
                 onCameraPress={handleCameraPress}
             />
 
-            <View style={{ marginTop: -(userProfileCardHeight / 4) }}>
+            <View style={{ marginTop: -(userProfileCardHeight / 2) }}>
                 <UserProfileCard
                     onLayout={e => {
                         const { height } = e.nativeEvent.layout;
                         setUserProfileCardHeight(height);
                     }}
                     height={userProfileCardHeight}
+                    name={user && user.name}
+                    profilePictureUri={user && user.profilePicture}
+                    bio={user && user.bio}
                 />
             </View>
+
+            {loading && <Loader />}
         </View>
     );
 };
@@ -93,12 +118,13 @@ function ProfileScreen(props: ProfileScreenProps) {
  * Renderes cover photo.
  */
 function CoverPhoto({
-    onCameraPress
+    onCameraPress,
+    coverProfilePictureUri
 }: CoverPhotoProps) {
     return (
         <View style={styles.coverPhoto}>
             <Image
-                src={{ uri: 'https://cultivatedculture.com/wp-content/uploads/2019/05/Chromatic-LinkedIn-Cover-Photo-Background.png' }}
+                src={{ uri: coverProfilePictureUri }}
                 style={commonStyles.flex}
                 resizeMode='stretch'
             />
@@ -117,7 +143,10 @@ function CoverPhoto({
  * Renderes user profile card.
  */
 function UserProfileCard({
-    onLayout
+    onLayout,
+    profilePictureUri,
+    name,
+    bio
 }: UserProfileCardProps) {
     return (
         <Card
@@ -126,19 +155,16 @@ function UserProfileCard({
         >
             <Card.Content>
                 <Image
-                    src={{ uri: 'https://www.pngarts.com/files/6/User-Avatar-in-Suit-PNG.png' }}
+                    src={{ uri: profilePictureUri }}
                     style={styles.userProfileImg}
                 />
 
                 <Title style={styles.profileName}>
-                    {'user name'}
+                    {name}
                 </Title>
 
                 <Text style={styles.profileBio}>
-                    {`.sdsakndlkandlksndlknskaldnakLdnkadnkandkandkaشينىنمشىي
-                    sdsakndlkandlksndlknskaldsdsakndlkandlksndlknskald
-                    sdsakndlkandlksndlknskaldsdsakndlkandlksndlknskald
-                    `}
+                    {bio}
                 </Text>
             </Card.Content>
         </Card>

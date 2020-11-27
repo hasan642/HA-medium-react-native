@@ -18,5 +18,5 @@ export interface UserStorageModel extends UserProps { };
  * The type of storage models.
  */
 export type StorageModel =
-    string |
+    string &
     UserStorageModel;

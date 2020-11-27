@@ -37,11 +37,18 @@ function SettingsScreen({ componentId }: SettingsScreenProps) {
     /**
      * Handles logout user.
      */
-    const handleLogout = () => {
-        StorageHelper.clear('@User')
-            .then(_ => {
-                goToAuth();
-            });
+    const handleLogout = async () => {
+
+        /**
+         * clear user storage.
+         */
+        await StorageHelper.clear('@User')
+        
+        /**
+         * go to auth.
+         */
+        goToAuth();
+
     };
 
     /**

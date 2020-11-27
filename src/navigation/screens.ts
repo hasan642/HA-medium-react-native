@@ -48,6 +48,7 @@ export function registerScreens() {
 
     Navigation.registerComponent(
         screens.PROFILE_SCREEN,
+        () => withRedux(ProfileScreen),
         () => ProfileScreen
     );
 

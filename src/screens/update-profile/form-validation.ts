@@ -5,5 +5,5 @@ export const formValidator = () => yup.object().shape({
     name: yup.string()
         .required(translate('validation.fieldRequired')),
     bio: yup.string()
-        .required(translate('validation.fieldRequired')),
+        .optional(),
 });

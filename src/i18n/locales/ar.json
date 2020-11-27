@@ -20,7 +20,8 @@
     "profileScreen": {
         "update": "تعديل الملف الشخصي",
         "name": "الاسم",
-        "bio": "السيرة الذاتية"
+        "bio": "السيرة الذاتية",
+        "upadted": "تم تعديل البيانات"
     },
     "validation": {
         "fieldRequired": "الحقل مطلوب"

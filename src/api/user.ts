@@ -14,7 +14,7 @@ import { UserApiModel } from 'api';
 class User extends Api {
 
     /**
-     * create new user.
+     * Create new user.
      */
     createNewUser = async (
         userName: string,
@@ -45,12 +45,9 @@ class User extends Api {
         };
 
         /**
-         * grap user data from response.
+         * grap user from response.
          */
-        const {
-            user,
-            user: { subscription }
-        } = await response.json();
+        const { user } = await response.json();
 
         /**
          * serialize user data.
@@ -60,11 +57,10 @@ class User extends Api {
             name: user.user_name,
             email: user.email,
             updatedAt: user.updated_at,
-            subscription: subscription &&
-                {
-                    isSubscribed: subscription.is_subscribed,
-                    date: subscription.subscription_date
-                },
+            bio: user.bio,
+            coverPhoto: `${SHARED_VARIABLES.API_BASE_URL}/${user.cover_picture}`,
+            profilePicture: `${SHARED_VARIABLES.API_BASE_URL}/${user.profile_picture}`,
+            subscription: user.subscription,
         });
 
         /**
@@ -75,6 +71,64 @@ class User extends Api {
             user: serializedUser
         };
 
+    };
+
+    /**
+     * Updates user by email.
+     */
+    updateUser = async (user: Partial<UserApiModel>) => {
+
+        /**
+         * update user response.
+         */
+        const response = await this.put(
+            `${SHARED_VARIABLES.API_BASE_URL}/users/update_user`,
+            {
+                user_name: user.name,
+                email: user.email,
+                profile_picture: user.profilePicture,
+                cover_picture: user.coverPhoto,
+                bio: user.bio,
+                subscription: user.subscription
+            }
+        );
+
+        /**
+         * handle if response is not ok.
+         */
+        if (!response.ok) {
+            return {
+                kind: 'REJECTED',
+                error: ApiTypes.getError(response.status)
+            };
+        };
+
+        /**
+         * grap user data from response.
+         */
+        const { updatedUser } = await response.json();
+
+        /**
+         * serialize upadted user data.
+         */
+        const serializedUpdatedUser = new UserApiModel({
+            id: updatedUser._id,
+            name: updatedUser.user_name,
+            email: updatedUser.email,
+            updatedAt: updatedUser.updated_at,
+            bio: updatedUser.bio,
+            coverPhoto: `${SHARED_VARIABLES.API_BASE_URL}/${updatedUser.cover_picture}`,
+            profilePicture: `${SHARED_VARIABLES.API_BASE_URL}/${updatedUser.profile_picture}`,
+            subscription: updatedUser.subscription,
+        });
+
+        /**
+         * return final response.
+         */
+        return {
+            kind: 'OK',
+            user: serializedUpdatedUser
+        };
     };
 
 };

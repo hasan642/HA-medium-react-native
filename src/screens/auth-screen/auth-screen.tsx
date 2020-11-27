@@ -1,4 +1,7 @@
-import React, { useCallback } from 'react';
+import React, {
+    useCallback,
+    useEffect
+} from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 import { commonStyles } from 'theme';
@@ -22,6 +25,8 @@ import {
     userSelector,
     createUser
 } from 'redux/slices/user-slice';
+import { goToApp } from 'navigation';
+import { General } from 'utils';
 
 /**
  * A function component that shows a login screen
@@ -32,13 +37,32 @@ function AuthScreen() {
      * get data from redux.
      */
     const {
-        loading
+        loading,
+        success,
+        error
     } = useSelector(userSelector);
 
     /**
      * use dispatch.
      */
     const dispatch = useDispatch();
+
+    /**
+     * use effect.
+     */
+    useEffect(
+        () => {
+            if (success) {
+                goToApp();
+            } else if (error != null) {
+                General.showToast(error);
+            };
+        },
+        [
+            success,
+            error
+        ]
+    );
 
     /**
      * handle continue with google.

@@ -20,7 +20,8 @@
     "profileScreen": {
         "update": "Edit profile",
         "name": "Name",
-        "bio": "Bio"
+        "bio": "Bio",
+        "upadted": "User has been updated"
     },
     "validation": {
         "fieldRequired": "The field is required"

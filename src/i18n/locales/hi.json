@@ -20,7 +20,8 @@
     "profileScreen": {
         "update": "प्रोफ़ाइल संपादित करें",
         "name": "नाम",
-        "bio": "जैव"
+        "bio": "जैव",
+        "upadted": "डेटा संशोधित किया गया है"
     },
     "validation": {
         "fieldRequired": "क्षेत्र की आवश्यकता है"
