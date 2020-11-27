@@ -13,7 +13,8 @@ const color = Object.freeze({
     boulder: '#757575',
     emerald: '#55C65A',
     silverOverlay: 'rgba(192, 192, 192, 0.5)',
-    danger: '#df4759'
+    danger: '#df4759',
+    success: '#4BB543'
 });
 
 /**

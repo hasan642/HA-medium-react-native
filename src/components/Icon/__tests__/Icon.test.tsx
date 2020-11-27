@@ -11,8 +11,5 @@ import renderer from 'react-test-renderer';
 import Icon from '../Icon';
 
 describe('<Icon />', () => {
-  beforeEach(() => {});
-  afterEach(() => {});
-
-  test('should ...', () => {});
+ 
 });

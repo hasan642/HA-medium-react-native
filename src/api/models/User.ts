@@ -10,8 +10,10 @@ export interface UserProps {
     name: string;
     email: string;
     updatedAt: number;
-    subscription?: UserSubscription;
-    bio?: string;
+    subscription: UserSubscription;
+    bio: string;
+    coverPhoto: string;
+    profilePicture: string;
 };
 
 /**
@@ -27,7 +29,9 @@ class User {
     email: '';
     updatedAt: 0;
     subscription: null;
-    bio?: string = '';
+    bio: string = null;
+    coverPhoto: string = null;
+    profilePicture: string = null;
 
     constructor(obj: UserProps) {
         for (let key in obj) {
