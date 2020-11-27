@@ -182,6 +182,9 @@ export function setDefaultOptions() {
                 top: 4
             }
         },
+        modal: {
+            swipeToDismiss: true
+        },
         popGesture: true,
     })
 };
@@ -210,4 +213,34 @@ export function createTabStack(
             }
         }
     }
+};
+
+/**
+ * Shows a modal.
+ */
+export function showModal(
+    screenName: Screens,
+    props?: { [key: string]: any }
+) {
+    Navigation.showModal({
+        component: {
+            id: screens[screenName],
+            name: screens[screenName],
+            passProps: props
+        }
+    });
+};
+
+/**
+ * Dismisses moal.
+ */
+export function dismissModal(componentId: string) {
+    Navigation.dismissModal(componentId);
+};
+
+/**
+ * Goes back.
+ */
+export function goBack(componentId: string) {
+    Navigation.pop(componentId);
 };

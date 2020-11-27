@@ -16,5 +16,13 @@
         "settings": "Settings",
         "home": "Home",
         "profile": "Profile"
+    },
+    "profileScreen": {
+        "update": "Edit profile",
+        "name": "Name",
+        "bio": "Bio"
+    },
+    "validation": {
+        "fieldRequired": "The field is required"
     }
 }

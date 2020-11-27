@@ -16,5 +16,13 @@
         "settings": "الإعدادات",
         "home": "الرئيسية",
         "profile": "الملف الشخصي"
+    },
+    "profileScreen": {
+        "update": "تعديل الملف الشخصي",
+        "name": "الاسم",
+        "bio": "السيرة الذاتية"
+    },
+    "validation": {
+        "fieldRequired": "الحقل مطلوب"
     }
 }

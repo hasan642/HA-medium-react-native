@@ -1,13 +1,20 @@
 import React from 'react';
 import { Appbar } from 'react-native-paper';
 import styles from './styles';
+import { ViewStyle } from 'react-native';
 
 /**
  * type checking.
  */
 interface HeaderProps {
-    handleGoBack?: () => void;
     title: string;
+
+    /**
+     * an optional props.
+     */
+    handleGoBack?: () => void;
+    children?: JSX.Element;
+    style?: ViewStyle;
 };
 
 /**
@@ -15,11 +22,16 @@ interface HeaderProps {
  */
 function Header({
     handleGoBack,
-    title
+    title,
+    children,
+    style: overrideStyle
 }: HeaderProps) {
     return (
         <Appbar.Header
-            style={styles.header}
+            style={[
+                styles.header,
+                overrideStyle
+            ]}
         >
 
             {
@@ -29,7 +41,12 @@ function Header({
                 />)
             }
 
-            <Appbar.Content title={title} />
+            <Appbar.Content
+                title={title}
+                titleStyle={styles.titleStyle}
+            />
+
+            {children}
         </Appbar.Header>
     );
 };

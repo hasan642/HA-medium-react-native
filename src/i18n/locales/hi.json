@@ -16,5 +16,13 @@
         "settings": "समायोजन",
         "home": "घर",
         "profile": "प्रोफ़ाइल"
+    },
+    "profileScreen": {
+        "update": "प्रोफ़ाइल संपादित करें",
+        "name": "नाम",
+        "bio": "जैव"
+    },
+    "validation": {
+        "fieldRequired": "क्षेत्र की आवश्यकता है"
     }
 }

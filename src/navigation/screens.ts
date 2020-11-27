@@ -4,13 +4,15 @@ import {
     HomeScreen,
     AuthScreen,
     SettingsScreen,
-    ProfileScreen
+    ProfileScreen,
+    UpdateProfileScreen
 } from 'screens';
 
 /**
  * constants.
  */
 const prefix = 'com.medium';
+const modalPrefix = `${prefix}.modal`;
 
 /**
  * screen names.
@@ -20,6 +22,7 @@ export const screens = {
     AUTH_SCREEN: `${prefix}.authScreen`,
     SETTINGS_SCREEN: `${prefix}.settingsScreen`,
     PROFILE_SCREEN: `${prefix}.profileScreen`,
+    UPDATE_PROFILE: `${modalPrefix}.updateProfileScreen`
 };
 
 /**
@@ -46,6 +49,12 @@ export function registerScreens() {
     Navigation.registerComponent(
         screens.PROFILE_SCREEN,
         () => ProfileScreen
+    );
+
+    Navigation.registerComponent(
+        screens.UPDATE_PROFILE,
+        () => withRedux(UpdateProfileScreen),
+        () => UpdateProfileScreen
     );
 };
 

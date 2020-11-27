@@ -1,0 +1,19 @@
+/*********************************************************************************************************************
+ * File: Image.tsx
+ * Developed By Hasan Alawneh
+ * Email: h.alawneh@alsahabglobal.com
+ * Date: 2020-11-22
+ * Desc: All Image styles live here.
+ * Copyright (c) - Waseet.net
+ *********************************************************************************************************************/
+
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+    img: {
+        height: null,
+        width: null
+    }
+});
+
+export default styles;
