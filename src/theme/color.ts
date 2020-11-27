@@ -12,7 +12,8 @@ const color = Object.freeze({
     mineShaft: '#3d3d3d',
     boulder: '#757575',
     emerald: '#55C65A',
-    silverOverlay: 'rgba(192, 192, 192, 0.5)'
+    silverOverlay: 'rgba(192, 192, 192, 0.5)',
+    danger: '#df4759'
 });
 
 /**

@@ -1,6 +1,6 @@
 import React, {
-    useState,
-    useRef
+    useRef,
+    useEffect
 } from 'react';
 import {
     View,
@@ -21,6 +21,9 @@ import {
     Appbar
 } from 'react-native-paper';
 import { layout } from 'theme';
+import { useForm } from 'react-hook-form';
+import { formValidator } from './form-validation';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 /**
  * type checking.
@@ -31,6 +34,10 @@ interface UpdateProfileScreenProps extends NavigationComponentProps {
 interface EditableAvatarProps {
     handleCameraPress: () => void;
 };
+type FormData = {
+    name: string;
+    bio: string;
+};
 
 /**
  * A function component that shows the UpdateProfileScreen.
@@ -38,10 +45,17 @@ interface EditableAvatarProps {
 function UpdateProfileScreen(props: UpdateProfileScreenProps) {
 
     /**
-     * state.
+     * initialize react form hook.
      */
-    const [name, setName] = useState<string>(null);
-    const [bio, setBio] = useState<string>(null);
+    const {
+        register,
+        unregister,
+        handleSubmit,
+        errors,
+        setValue,
+    } = useForm<FormData>({
+        resolver: yupResolver(formValidator()),
+    });
 
     /**
      * refs
@@ -58,10 +72,33 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
     /**
      * Handle save user data.
      */
-    const handleSavePress = () => {
-
+    const handleSavePress = ({ name, bio }: FormData) => {
+        console.log({ name, bio });
     };
 
+    /**
+     * Registeres form hook.
+     */
+    useEffect(
+        () => {
+
+            /**
+             * register inputs. 
+             */
+            register('name');
+            register('bio');
+
+            /**
+             * clean up function.
+             */
+            return () => {
+                unregister('name');
+                unregister('bio');
+            };
+        },
+        [register]
+    );
+    console.log('errors', errors)
     return (
         <View style={styles.container}>
             <Header
@@ -72,7 +109,7 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
                 <Appbar.Action
                     {...{} as any}
                     icon="check"
-                    onPress={handleSavePress}
+                    onPress={handleSubmit(handleSavePress)}
                 />
             </Header>
 
@@ -87,19 +124,19 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
 
                 <View style={styles.inputsHolder}>
                     <Input
-                        onChangeText={setName}
-                        value={name}
-                        style={styles.input}
+                        onChangeText={name => setValue('name', name)}
+                        containerStyle={styles.input}
                         placeholder={translate('profileScreen.name')}
                         onSubmitEditing={() => bioRef.current.focus()}
+                        errorMessage={errors.name ?.message}
                     />
 
                     <Input
-                        onChangeText={setBio}
-                        value={bio}
-                        style={styles.input}
+                        onChangeText={bio => setValue('bio', bio)}
+                        containerStyle={styles.input}
                         placeholder={translate('profileScreen.bio')}
                         ref={bioRef}
+                        errorMessage={errors.bio ?.message}
                     />
                 </View>
             </KeyboardAwareScrollView>

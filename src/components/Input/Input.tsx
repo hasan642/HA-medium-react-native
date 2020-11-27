@@ -8,21 +8,29 @@
  *********************************************************************************************************************/
 
 import React, { forwardRef } from 'react';
-import { TextStyle } from 'react-native';
+import {
+  TextStyle,
+  View,
+  ViewStyle
+} from 'react-native';
 import styles, { theme } from './styles';
-import { TextInput } from 'react-native-paper';
+import {
+  TextInput,
+  HelperText
+} from 'react-native-paper';
 
 /**
  * interfaces and types
  */
 interface InputProps {
   onChangeText: (text: string) => void;
-  value: string;
   placeholder: string;
 
+  value?: string;
   onSubmitEditing?: () => void;
-  error?: boolean;
   style?: TextStyle;
+  containerStyle?: ViewStyle;
+  errorMessage?: string;
 };
 
 /**
@@ -33,21 +41,38 @@ function Input({
   onSubmitEditing,
   value,
   placeholder,
-  error = false,
-  style: overrideInputStyle
+  style: overrideInputStyle,
+  containerStyle,
+  errorMessage
 }: InputProps,
   ref: any) {
-  return (<TextInput
-    theme={theme}
-    onChangeText={onChangeText}
-    onSubmitEditing={onSubmitEditing}
-    value={value}
-    style={overrideInputStyle}
-    error={error}
-    mode='outlined'
-    placeholder={placeholder}
-    ref={ref}
-  />);
+  return (
+    <View style={containerStyle}>
+      <TextInput
+        theme={theme}
+        onChangeText={onChangeText}
+        onSubmitEditing={onSubmitEditing}
+        value={value}
+        style={overrideInputStyle}
+        error={errorMessage !== undefined}
+        mode='outlined'
+        placeholder={placeholder}
+        ref={ref}
+      />
+
+      <HelperText
+
+        {...{} as any}
+
+        type="error"
+        padding='none'
+        visible={errorMessage !== undefined}
+        style={styles.helperTxt}
+      >
+        {errorMessage}
+      </HelperText>
+    </View>
+  );
 };
 
 /**

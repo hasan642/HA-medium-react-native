@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     container: {
 
     },
+    helperTxt: {
+        marginTop: 2
+    }
 });
 
 /**
@@ -25,7 +28,8 @@ export const theme: PaperTheme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        primary: color.emerald
+        primary: color.emerald,
+        error: color.danger
     }
 };
 
