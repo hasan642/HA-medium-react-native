@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00BDB25B79FE3AD9994C44DD /* libPods-SimpleMedium-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C8DF1EE0BF670856E27765 /* libPods-SimpleMedium-tvOS.a */; };
 		00E356F31AD99517003FC87E /* SimpleMediumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SimpleMediumTests.m */; };
@@ -22,6 +21,14 @@
 		2DCD954D1E0B4F2C00145EB5 /* SimpleMediumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SimpleMediumTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D7B7918E01D4B1A91A5B94DD /* libPods-SimpleMedium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C553ED133F02745A7EEB19 /* libPods-SimpleMedium.a */; };
+		64F633E1955F458EBF4FAFF4 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A492A6FF6FC041088D896DF4 /* Lato-Black.ttf */; };
+		4A8E389E3AFA4561BDA2539E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C50EE28445045F091B07B86 /* Lato-Bold.ttf */; };
+		C6B9BAF1E823492EA24C23E5 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85DCF7026CCF461CB8F90E46 /* Lato-Light.ttf */; };
+		105F0E00065F44058C21CBE7 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B034662B6694B4693503251 /* Lato-Regular.ttf */; };
+		B4F49713FE224E47BFB72C3C /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03F4773779C04AA1938EC574 /* Tajawal-Black.ttf */; };
+		AEAEEA84FEC5431892088E90 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35B5AFB125CF4317B2B6250A /* Tajawal-Bold.ttf */; };
+		5B896EA9537642959D321F53 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0541A10A62AF4506B4328B24 /* Tajawal-Light.ttf */; };
+		9E528305595A47329C2D5643 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 645539FC63C74561A3EE9527 /* Tajawal-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +79,14 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EECB0A66D5115A74C10BBB2D /* Pods-SimpleMedium-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMedium-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleMedium-tvOSTests/Pods-SimpleMedium-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		FC50E46B3E4ADCF89B4DCAA8 /* Pods-SimpleMedium-SimpleMediumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMedium-SimpleMediumTests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMedium-SimpleMediumTests/Pods-SimpleMedium-SimpleMediumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A492A6FF6FC041088D896DF4 /* Lato-Black.ttf */ = {isa = PBXFileReference; name = "Lato-Black.ttf"; path = "../src/assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3C50EE28445045F091B07B86 /* Lato-Bold.ttf */ = {isa = PBXFileReference; name = "Lato-Bold.ttf"; path = "../src/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		85DCF7026CCF461CB8F90E46 /* Lato-Light.ttf */ = {isa = PBXFileReference; name = "Lato-Light.ttf"; path = "../src/assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B034662B6694B4693503251 /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		03F4773779C04AA1938EC574 /* Tajawal-Black.ttf */ = {isa = PBXFileReference; name = "Tajawal-Black.ttf"; path = "../src/assets/fonts/Tajawal-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		35B5AFB125CF4317B2B6250A /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; name = "Tajawal-Bold.ttf"; path = "../src/assets/fonts/Tajawal-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0541A10A62AF4506B4328B24 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; name = "Tajawal-Light.ttf"; path = "../src/assets/fonts/Tajawal-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		645539FC63C74561A3EE9527 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; name = "Tajawal-Regular.ttf"; path = "../src/assets/fonts/Tajawal-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +203,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				2251E96A896F726C06BCAD4E /* Pods */,
+				F905C3D99DE54B7BB2B0C5F6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -204,6 +220,22 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		F905C3D99DE54B7BB2B0C5F6 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				A492A6FF6FC041088D896DF4 /* Lato-Black.ttf */,
+				3C50EE28445045F091B07B86 /* Lato-Bold.ttf */,
+				85DCF7026CCF461CB8F90E46 /* Lato-Light.ttf */,
+				4B034662B6694B4693503251 /* Lato-Regular.ttf */,
+				03F4773779C04AA1938EC574 /* Tajawal-Black.ttf */,
+				35B5AFB125CF4317B2B6250A /* Tajawal-Bold.ttf */,
+				0541A10A62AF4506B4328B24 /* Tajawal-Light.ttf */,
+				645539FC63C74561A3EE9527 /* Tajawal-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -352,6 +384,14 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				18DAAD1F2544D7CE006B9A3E /* GoogleService-Info.plist in Resources */,
+				64F633E1955F458EBF4FAFF4 /* Lato-Black.ttf in Resources */,
+				4A8E389E3AFA4561BDA2539E /* Lato-Bold.ttf in Resources */,
+				C6B9BAF1E823492EA24C23E5 /* Lato-Light.ttf in Resources */,
+				105F0E00065F44058C21CBE7 /* Lato-Regular.ttf in Resources */,
+				B4F49713FE224E47BFB72C3C /* Tajawal-Black.ttf in Resources */,
+				AEAEEA84FEC5431892088E90 /* Tajawal-Bold.ttf in Resources */,
+				5B896EA9537642959D321F53 /* Tajawal-Light.ttf in Resources */,
+				9E528305595A47329C2D5643 /* Tajawal-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

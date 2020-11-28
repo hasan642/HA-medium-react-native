@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     },
     btnLabelStyle: {
         color: color.dark,
-        fontFamily: typography.primary,
     }
 });
 
