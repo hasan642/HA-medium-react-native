@@ -10,6 +10,10 @@ import {
  */
 const userProfileCardWidth = layout.width * 0.95;
 const userProfileImg = userProfileCardWidth / 3;
+
+/**
+ * the styles live here.
+ */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

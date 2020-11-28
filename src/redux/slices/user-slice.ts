@@ -61,11 +61,13 @@ const userSlice = createSlice({
 /**
  * grap the actions.
  */
-export const {
+const {
     loadUser,
     setError,
     setUser,
-    reset,
+    reset
+} = userSlice.actions;
+export const {
     cacheUser
 } = userSlice.actions;
 
@@ -146,13 +148,13 @@ export const updateUser = (user: Partial<UserApiModel>) => {
             /**
              * update user api.
              */
-            const createdUserResponse = await UserApi.updateUser(user);
+            const updatedUserResponse = await UserApi.updateUser(user);
 
             /**
-             * hanlde if not OK.
+             * hanlde if is not OK.
              */
-            if (createdUserResponse.kind !== 'OK') {
-                dispatch(setError(createdUserResponse.error));
+            if (updatedUserResponse.kind !== 'OK') {
+                dispatch(setError(updatedUserResponse.error));
                 return;
             };
 
@@ -161,13 +163,13 @@ export const updateUser = (user: Partial<UserApiModel>) => {
              */
             await storage.save(
                 '@User',
-                createdUserResponse.user
+                updatedUserResponse.user
             );
 
             /**
              * update user in redux.
              */
-            dispatch(setUser(createdUserResponse.user));
+            dispatch(setUser(updatedUserResponse.user));
 
             /**
              * reset user state.
