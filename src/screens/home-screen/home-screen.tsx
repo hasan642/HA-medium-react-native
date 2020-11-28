@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Text } from 'react-native';
 import { NavigationComponentProps } from 'react-native-navigation';
-import { color } from 'theme';
+import { color, typography } from 'theme';
 import { translate } from 'i18n';
-import { Header, Loader } from 'components';
+import { Header, Loader, } from 'components';
 
 /**
  * type checking.
@@ -16,17 +16,40 @@ function HomeScreen(props: HomeProps) {
     return (
         <View style={{
             backgroundColor: color.offWhite,
-            flex: 1
+            flex: 1,
+            padding:24
         }}>
             <Header
                 title={translate('screens.home')}
             />
 
-            <Button
-                title='ggg'
-                onPress={() => {
-                }}
-            />
+            <Text style={{
+                fontFamily: typography.black,
+                fontSize: 18
+            }}>
+                {'font one || الخط الاول'}
+            </Text>
+
+            <Text style={{
+                fontFamily: typography.bold,
+                fontSize: 18
+            }}>
+                {'font two || الخط الثاني'}
+            </Text>
+
+            <Text style={{
+                fontFamily: typography.light,
+                fontSize: 18
+            }}>
+                {'font three || الخط الثالث'}
+            </Text>
+
+            <Text style={{
+                fontFamily: typography.regular,
+                fontSize: 18
+            }}>
+                {'font four || الخط الرابع'}
+            </Text>
         </View>
     );
 };
