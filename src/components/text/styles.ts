@@ -10,7 +10,6 @@ import {
 const styles = StyleSheet.create({
     text: {
         color: color.dark,
-        fontFamily: typography.primary
     }
 });
 
