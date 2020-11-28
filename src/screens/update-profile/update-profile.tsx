@@ -10,7 +10,8 @@ import styles from './styles';
 import { NavigationComponentProps } from 'react-native-navigation';
 import {
     Header,
-    Input
+    Input,
+    Loader
 } from 'components';
 import { translate } from 'i18n';
 import { dismissModal } from 'navigation';
@@ -24,6 +25,18 @@ import { layout } from 'theme';
 import { useForm } from 'react-hook-form';
 import { formValidator } from './form-validation';
 import { yupResolver } from '@hookform/resolvers/yup';
+import {
+    useSelector,
+    useDispatch
+} from 'react-redux';
+import {
+    userSelector,
+    updateUser
+} from 'redux/slices';
+import {
+    General,
+    StorageHelper
+} from 'utils';
 
 /**
  * type checking.
@@ -33,6 +46,7 @@ interface UpdateProfileScreenProps extends NavigationComponentProps {
 };
 interface EditableAvatarProps {
     handleCameraPress: () => void;
+    profilePictureUri: string;
 };
 type FormData = {
     name: string;
@@ -45,6 +59,16 @@ type FormData = {
 function UpdateProfileScreen(props: UpdateProfileScreenProps) {
 
     /**
+     * get data from redux.
+     */
+    const {
+        loading,
+        success,
+        error,
+        user
+    } = useSelector(userSelector);
+
+    /**
      * initialize react form hook.
      */
     const {
@@ -53,28 +77,17 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
         handleSubmit,
         errors,
         setValue,
+        getValues,
+        watch
     } = useForm<FormData>({
         resolver: yupResolver(formValidator()),
     });
 
     /**
-     * refs
+     * watch all fields to re-render when setValue in useEffect
+     * * to set initial values.
      */
-    const bioRef = useRef<TextInput>(null);
-
-    /**
-     * Handle camera press to change the user profile photo.
-     */
-    const handleCameraPress = () => {
-
-    };
-
-    /**
-     * Handle save user data.
-     */
-    const handleSavePress = ({ name, bio }: FormData) => {
-        console.log({ name, bio });
-    };
+    watch();
 
     /**
      * Registeres form hook.
@@ -98,7 +111,76 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
         },
         [register]
     );
-    console.log('errors', errors)
+
+    /**
+     * update user data to inputs.
+     */
+    useEffect(
+        () => {
+            if (user) {
+                setValue('name', user.name || '');
+                setValue('bio', user.bio || '');
+            };
+        },
+        [user]
+    );
+
+    /**
+     * use dispatch.
+     */
+    const dispatch = useDispatch();
+
+    /**
+     * use effect.
+     */
+    useEffect(
+        () => {
+            if (success) {
+                General.showToast(translate('profileScreen.upadted'));
+                dismissModal(props.componentId);
+            } else if (error != null) {
+                General.showToast(error);
+            };
+        },
+        [
+            success,
+            error,
+            props.componentId
+        ]
+    );
+
+    /**
+     * refs.
+     */
+    const bioRef = useRef<TextInput>(null);
+
+    /**
+     * Handle camera press to change the user profile photo.
+     */
+    const handleCameraPress = () => {
+
+    };
+
+    /**
+     * Handle save user data.
+     */
+    const handleSavePress = async ({ name, bio }: FormData) => {
+        const { email } = await StorageHelper.get('@User');
+        dispatch(updateUser({
+            name,
+            bio,
+            email
+        }));
+    };
+
+    /**
+     * get data from get values.
+     */
+    const {
+        name,
+        bio
+    } = getValues();
+
     return (
         <View style={styles.container}>
             <Header
@@ -119,6 +201,7 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
                 showsVerticalScrollIndicator={false}
             >
                 <EditableAvatar
+                    profilePictureUri={user && user.profilePicture}
                     handleCameraPress={handleCameraPress}
                 />
 
@@ -128,7 +211,8 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
                         containerStyle={styles.input}
                         placeholder={translate('profileScreen.name')}
                         onSubmitEditing={() => bioRef.current.focus()}
-                        errorMessage={errors.name ?.message}
+                        errorMessage={errors && errors.name && errors.name.message}
+                        value={name}
                     />
 
                     <Input
@@ -136,10 +220,13 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
                         containerStyle={styles.input}
                         placeholder={translate('profileScreen.bio')}
                         ref={bioRef}
-                        errorMessage={errors.bio ?.message}
+                        errorMessage={errors && errors.bio && errors.bio.message}
+                        value={bio}
                     />
                 </View>
             </KeyboardAwareScrollView>
+
+            {loading && <Loader />}
         </View>
     );
 };
@@ -148,14 +235,15 @@ function UpdateProfileScreen(props: UpdateProfileScreenProps) {
  * Renderes edutable avatar.
  */
 function EditableAvatar({
-    handleCameraPress
+    handleCameraPress,
+    profilePictureUri
 }: EditableAvatarProps) {
     return (
         <View>
             <Avatar.Image
                 size={layout.width / 3}
                 style={styles.avatar}
-                source={{ uri: 'https://www.pngarts.com/files/6/User-Avatar-in-Suit-PNG.png' }}
+                source={{ uri: profilePictureUri }}
             />
 
             <IconButton

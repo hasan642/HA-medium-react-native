@@ -11,6 +11,8 @@ import {
 } from "./src/navigation";
 import { init } from "config";
 import { StorageHelper } from "utils";
+import { reduxStore } from "redux";
+import { cacheUser } from "redux/slices";
 
 /**
  * execute register screens function.
@@ -36,9 +38,19 @@ Navigation.events().registerAppLaunchedListener(
         /**
          * set main root.
          */
-        const isAuthinticated = await StorageHelper.get('@User') !== null;
-        if (isAuthinticated === true) {
+        const user = await StorageHelper.get('@User');
+        if (user !== null) {
+
+            /**
+             * save user data to storage.
+             */
+            reduxStore.dispatch(cacheUser(user));
+
+            /**
+             * navigate to app.
+             */
             goToApp();
+
         } else {
             goToAuth();
         };

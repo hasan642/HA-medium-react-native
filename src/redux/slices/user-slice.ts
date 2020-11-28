@@ -13,7 +13,6 @@ import {
 } from "api";
 import { Dispatch } from "react";
 import storage from "utils/storage/storage";
-import { goToApp } from "navigation";
 
 /**
  * The initial state.
@@ -48,6 +47,14 @@ const userSlice = createSlice({
             state.success = true;
             state.user = user;
         },
+        reset: (state) => {
+            state.loading = false;
+            state.error = null;
+            state.success = false;
+        },
+        cacheUser: (state, { payload: user }: PayloadAction<UserApiModel>) => {
+            state.user = user;
+        },
     },
 });
 
@@ -57,7 +64,11 @@ const userSlice = createSlice({
 const {
     loadUser,
     setError,
-    setUser
+    setUser,
+    reset
+} = userSlice.actions;
+export const {
+    cacheUser
 } = userSlice.actions;
 
 /**
@@ -107,14 +118,14 @@ export const createUser = (
             );
 
             /**
-             * save user to redux
+             * save user to redux.
              */
             dispatch(setUser(createdUserResponse.user));
 
             /**
-             * set root again.
+             * reset user state.
              */
-            goToApp();
+            dispatch(reset());
 
         } catch (e) {
             dispatch(setError(e));
@@ -123,11 +134,47 @@ export const createUser = (
 };
 
 /**
- * Update an user by id.
+ * Update the user by id.
  */
-export const updateUser = () => {
+export const updateUser = (user: Partial<UserApiModel>) => {
     return async (dispatch: Dispatch<any>) => {
         try {
+
+            /**
+             * enable loader.
+             */
+            dispatch(loadUser());
+
+            /**
+             * update user api.
+             */
+            const updatedUserResponse = await UserApi.updateUser(user);
+
+            /**
+             * hanlde if is not OK.
+             */
+            if (updatedUserResponse.kind !== 'OK') {
+                dispatch(setError(updatedUserResponse.error));
+                return;
+            };
+
+            /**
+             * save user data to storage.
+             */
+            await storage.save(
+                '@User',
+                updatedUserResponse.user
+            );
+
+            /**
+             * update user in redux.
+             */
+            dispatch(setUser(updatedUserResponse.user));
+
+            /**
+             * reset user state.
+             */
+            dispatch(reset());
 
         } catch (e) {
             dispatch(setError(e));

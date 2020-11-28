@@ -8,8 +8,12 @@ import {
 /**
  * constants.
  */
-const userProfileCardWidth = layout.width * 0.9;
+const userProfileCardWidth = layout.width * 0.95;
 const userProfileImg = userProfileCardWidth / 3;
+
+/**
+ * the styles live here.
+ */
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
         top: 0
     },
     contentStyle: {
-        width: layout.width * 0.9,
+        width: userProfileCardWidth,
         alignSelf: 'center',
         borderRadius: 8,
     },
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
     profileName: {
         color: color.mineShaft,
         textAlign: 'center',
-        marginTop: 4
+        marginTop: 16
     },
     profileBio: {
         color: color.boulder,

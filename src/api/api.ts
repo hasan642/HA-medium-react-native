@@ -56,7 +56,7 @@ class Api {
      */
     post = (
         url: string,
-        body?: ObjectType,
+        body: ObjectType,
         headers?: ObjectType
     ) => {
 
@@ -71,12 +71,29 @@ class Api {
             },
             body: JSON.stringify(body),
         });
+        
     };
 
     /**
      * implement the "PUT" method.
      */
-    put = () => {
+    put = (
+        url: string,
+        body: ObjectType,
+        headers?: ObjectType
+    ) => {
+
+        /**
+         * returns a put api call.
+         */
+        return fetch(url, {
+            method: 'PUT',
+            headers: {
+                ...DEFAULT_HEADERS,
+                ...headers
+            },
+            body: JSON.stringify(body),
+        });
 
     };
 
