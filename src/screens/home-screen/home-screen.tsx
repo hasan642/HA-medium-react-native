@@ -17,7 +17,7 @@ function HomeScreen(props: HomeProps) {
         <View style={{
             backgroundColor: color.offWhite,
             flex: 1,
-            padding:24
+            padding: 24
         }}>
             <Header
                 title={translate('screens.home')}
@@ -25,7 +25,8 @@ function HomeScreen(props: HomeProps) {
 
             <Text style={{
                 fontFamily: typography.black,
-                fontSize: 18
+                fontSize: 18,
+                textAlign: 'left'
             }}>
                 {'font one || الخط الاول'}
             </Text>

@@ -158,7 +158,7 @@ function LangaugeSwitcherScreen(props: LangaugeSwitcherScreenProps) {
          * change application language.
          */
         changeLanguage(language, isRTL);
-
+      
     };
 
     return (
@@ -204,7 +204,7 @@ function LangaugeSwitcherScreen(props: LangaugeSwitcherScreenProps) {
 
             <Button
                 style={styles.btn}
-                onPress={handleSelectLangauge}
+                onPress={()=>handleSelectLangauge()}
             >
                 {translate('settingsScreen.change')}
             </Button>

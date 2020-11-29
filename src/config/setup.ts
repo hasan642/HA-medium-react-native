@@ -63,6 +63,7 @@ export async function init() {
     /**
      * set "i18n" config.
      */
-    await setI18nConfig();
+    const s = await setI18nConfig();
+    console.log('XXX', s);
     
 };
