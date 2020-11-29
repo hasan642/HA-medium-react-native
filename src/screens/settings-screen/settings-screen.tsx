@@ -14,7 +14,7 @@ import { NavigationComponentProps } from 'react-native-navigation';
 import { commonStyles } from 'theme';
 import deviceInfoModule from 'react-native-device-info';
 import { StorageHelper } from 'utils';
-import { goToAuth } from 'navigation';
+import { goToAuth, goTo, showModal, } from 'navigation';
 import { Switch } from 'react-native-paper';
 
 /**
@@ -43,12 +43,19 @@ function SettingsScreen({ componentId }: SettingsScreenProps) {
          * clear user storage.
          */
         await StorageHelper.clear('@User')
-        
+
         /**
          * go to auth.
          */
         goToAuth();
 
+    };
+
+    /**
+     * Handles change langauge.
+     */
+    const handleChangeLanguage = () => {
+        showModal('LANGUAGE_SWITCHER');
     };
 
     /**
@@ -79,6 +86,13 @@ function SettingsScreen({ componentId }: SettingsScreenProps) {
                         value={isDarkModeEnabled}
                         onValueChange={handleChangeDarkMode}
                     />}
+                />
+
+                <ListItem
+                    rightIcon='chevron-right'
+                    rightPaperIcon
+                    title={translate('settingsScreen.language')}
+                    onPress={handleChangeLanguage}
                 />
 
                 <ListItem

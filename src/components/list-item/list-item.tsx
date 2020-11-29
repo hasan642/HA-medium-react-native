@@ -73,6 +73,9 @@ function ListItem({
 
     return (
         <List.Item
+
+            {...{} as any}
+
             disabled={onPress === undefined}
             title={title}
             titleStyle={styles.titleStyle}

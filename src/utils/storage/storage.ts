@@ -78,7 +78,7 @@ class AsyncStorage {
     /**
      * save data to storage.
      */
-    save = async (key: StorageTypes.Key, data: any): Promise<boolean> => {
+    save = async (key: StorageTypes.Key, data: StorageTypes.StorageModel): Promise<boolean> => {
         try {
             const handledData: string = this._convertData(data);
             await RNAsyncStorage.setItem(key, handledData);

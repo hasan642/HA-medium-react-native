@@ -1,57 +1,68 @@
-/**
- * A .ts file that contains an i18n config.
- */
-
 import * as RNLocalize from "react-native-localize";
 import memoize from "lodash.memoize";
 import i18n from "i18n-js";
 import { I18nManager } from 'react-native';
+import { StorageHelper } from "utils";
+import { LanguageModel } from "utils/storage/storage.types";
+import RNRestart from 'react-native-restart';
 
 /**
  * supported translations.
  */
 const translationGetters = {
-    // lazy requires (metro bundler does not support symlinks)
     ar: () => require("./locales/ar.json"),
     en: () => require("./locales/en.json"),
-    hi: () => require("./locales/hi.json")
+    hi: () => require("./locales/hi.json"),
+    fr: () => require("./locales/fr.json")
 };
 
 /**
  * translate function.
  */
 export const translate = memoize(
-    (key, config) => i18n.t(key, config),
+    (key, config = {}) => i18n.t(key, config),
     (key, config) => (config ? key + JSON.stringify(config) : key),
 );
 
 /**
  * set config.
  */
-export function setI18nConfig() {
-
-    // fallback if no available language fits
-    const fallback = {
-        languageTag: "en",
-        isRTL: false
-    };
+export async function setI18nConfig() {
 
     /**
-     * get device language.
+     * get current language from storage.
      */
-    const { languageTag, isRTL } =
-        RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
+    const currentLanguageFromStorage = await StorageHelper.get('@Language') as LanguageModel;
+
+    const {
+        languageTag: deviceLang,
+        isRTL
+    } = RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters))
+        ||
         fallback;
 
-    // clear translation cache
+    /**
+     * final lang.
+     */
+    const language = currentLanguageFromStorage && currentLanguageFromStorage.lang
+        ||
+        deviceLang;
+
+    /**
+     * clear translation cache.
+     */
     translate.cache.clear();
 
-    // update layout direction
+    /**
+     * update layout direction.
+     */
     I18nManager.forceRTL(isRTL);
 
-    // set i18n-js config
-    i18n.translations = { [languageTag]: translationGetters[languageTag]() };
-    i18n.locale = languageTag;
+    /**
+     * set i18n-js config.
+     */
+    i18n.translations = { [language]: translationGetters[language]() };
+    i18n.locale = language;
 };
 
 /**
@@ -60,3 +71,44 @@ export function setI18nConfig() {
 export function isRTL() {
     return I18nManager.isRTL;
 };
+
+/**
+ * Chnages the app language and restart.
+ */
+export function changeLanguage(lang: LanguagesKeys, isRTL: boolean) {
+
+    /**
+     *  update layout direction.
+     */
+    I18nManager.forceRTL(isRTL);
+
+    /**
+     * save language to storage.
+     */
+    const langInfoToStorage: LanguageModel = {
+        lang,
+        isRTL
+    };
+    StorageHelper.save('@Language', langInfoToStorage)
+        .then(_ => {
+
+            /**
+             * restart the app.
+             */
+            RNRestart.Restart();
+
+        });
+};
+
+/**
+ * fallback if no available language fits.
+ */
+export const fallback = {
+    languageTag: "en",
+    isRTL: false
+};
+
+/**
+ * Export types.
+ */
+export type LanguagesKeys = keyof typeof translationGetters;

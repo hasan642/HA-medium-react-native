@@ -10,7 +10,13 @@
     "settingsScreen": {
         "darkMode": "डार्क मोड",
         "notifications": "सूचनाएं",
-        "logout": "लॉग आउट"
+        "logout": "लॉग आउट",
+        "language": "भाषा: हिन्दी",
+        "arabic": "अरबी",
+        "english": "अंग्रेज़ी",
+        "hindi": "भारतीय",
+        "french": "फ्रेंच",
+        "change": "परिवर्तन"
     },
     "screens": {
         "settings": "समायोजन",

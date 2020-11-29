@@ -10,7 +10,13 @@
     "settingsScreen": {
         "darkMode": "Dark mode",
         "notifications": "Notifications",
-        "logout": "Logout"
+        "logout": "Logout",
+        "language": "Language",
+        "arabic": "Arabic",
+        "english": "English",
+        "hindi": "Hindi",
+        "french": "French",
+        "change": "Change"
     },
     "screens": {
         "settings": "Settings",

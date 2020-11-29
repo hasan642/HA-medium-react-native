@@ -36,7 +36,7 @@ function setupReactoTron() {
         .connect();
 };
 
-export function init() {
+export async function init() {
 
     /**
      * setup "reactotron".
@@ -63,6 +63,6 @@ export function init() {
     /**
      * set "i18n" config.
      */
-    setI18nConfig();
+    await setI18nConfig();
     
 };

@@ -10,7 +10,13 @@
     "settingsScreen": {
         "darkMode": "الوضع الليلي",
         "notifications": "الإشعارات",
-        "logout": "تسجيل الخروج"
+        "logout": "تسجيل الخروج",
+        "language": "اللغة",
+        "arabic": "العربية",
+        "english": "الانجليزية",
+        "hindi": "الهندية",
+        "french": "الفرنسية",
+        "change": "تغيير"
     },
     "screens": {
         "settings": "الإعدادات",
