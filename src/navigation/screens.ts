@@ -5,7 +5,8 @@ import {
     AuthScreen,
     SettingsScreen,
     ProfileScreen,
-    UpdateProfileScreen
+    UpdateProfileScreen,
+    LanguageSwitcherScreen
 } from 'screens';
 
 /**
@@ -22,7 +23,8 @@ export const screens = {
     AUTH_SCREEN: `${prefix}.authScreen`,
     SETTINGS_SCREEN: `${prefix}.settingsScreen`,
     PROFILE_SCREEN: `${prefix}.profileScreen`,
-    UPDATE_PROFILE: `${modalPrefix}.updateProfileScreen`
+    UPDATE_PROFILE: `${modalPrefix}.updateProfileScreen`,
+    LANGUAGE_SWITCHER: `${modalPrefix}.languageSwitcherScreen`,
 };
 
 /**
@@ -56,6 +58,11 @@ export function registerScreens() {
         screens.UPDATE_PROFILE,
         () => withRedux(UpdateProfileScreen),
         () => UpdateProfileScreen
+    );
+
+    Navigation.registerComponent(
+        screens.LANGUAGE_SWITCHER,
+        () => LanguageSwitcherScreen
     );
 };
 

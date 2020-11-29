@@ -1,0 +1,35 @@
+{
+    "common": {
+        "back": "Retour"
+    },
+    "authScreen": {
+        "joinTo": "Rejoint",
+        "continueWith": "Continué par ...",
+        "noGServices": "Vous n'avez pas de services Google!"
+    },
+    "settingsScreen": {
+        "darkMode": "Mode nuit",
+        "notifications": "Avis",
+        "logout": "Se déconnecter",
+        "language": "La langue",
+        "arabic": "L'arabe",
+        "english": "L'Anglais",
+        "hindi": "Indien",
+        "french": "français",
+        "change": "Changement"
+    },
+    "screens": {
+        "settings": "Réglages",
+        "home": "Principale",
+        "profile": "Profil personnel"
+    },
+    "profileScreen": {
+        "update": "Editer le profil",
+        "name": "Le nom",
+        "bio": "CV",
+        "upadted": "Les données ont été modifiées"
+    },
+    "validation": {
+        "fieldRequired": "Champ requis"
+    }
+}

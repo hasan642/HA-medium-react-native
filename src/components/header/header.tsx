@@ -7,11 +7,7 @@ import { ViewStyle } from 'react-native';
  * type checking.
  */
 interface HeaderProps {
-    title: string;
-
-    /**
-     * an optional props.
-     */
+    title?: string;
     handleGoBack?: () => void;
     children?: JSX.Element;
     style?: ViewStyle;

@@ -28,7 +28,7 @@ Navigation.events().registerAppLaunchedListener(
         /**
          * execute init function.
          */
-        init();
+        await init();
 
         /**
          * set default options.
