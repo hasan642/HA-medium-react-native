@@ -13,6 +13,7 @@ import { init } from "config";
 import { StorageHelper } from "utils";
 import { reduxStore } from "redux";
 import { cacheUser } from "redux/slices";
+import { setI18nConfig } from "i18n";
 
 /**
  * execute register screens function.

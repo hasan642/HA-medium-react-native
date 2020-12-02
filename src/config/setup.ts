@@ -64,5 +64,5 @@ export async function init() {
      * set "i18n" config.
      */
     await setI18nConfig();
-    
+
 };

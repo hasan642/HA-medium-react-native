@@ -27,7 +27,7 @@ export const translate = memoize(
 /**
  * set config.
  */
-export async function setI18nConfig() {
+export async function setI18nConfig(): Promise<boolean> {
 
     /**
      * get current language from storage.
@@ -36,7 +36,6 @@ export async function setI18nConfig() {
 
     const {
         languageTag: deviceLang,
-        isRTL
     } = RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters))
         ||
         fallback;
@@ -49,20 +48,12 @@ export async function setI18nConfig() {
         deviceLang;
 
     /**
-     * clear translation cache.
-     */
-    translate.cache.clear();
-
-    /**
-     * update layout direction.
-     */
-    I18nManager.forceRTL(isRTL);
-
-    /**
      * set i18n-js config.
      */
     i18n.translations = { [language]: translationGetters[language]() };
     i18n.locale = language;
+
+    return true;
 };
 
 /**
@@ -76,28 +67,17 @@ export function isRTL() {
  * Chnages the app language and restart.
  */
 export function changeLanguage(lang: LanguagesKeys, isRTL: boolean) {
+    i18n.locale = lang;
+    StorageHelper.save(
+        '@Language',
+        {
+            lang,
+            isRTL
+        }
+    );
+    I18nManager.forceRTL(lang === 'ar');
 
-    /**
-     *  update layout direction.
-     */
-    I18nManager.forceRTL(isRTL);
-
-    /**
-     * save language to storage.
-     */
-    const langInfoToStorage: LanguageModel = {
-        lang,
-        isRTL
-    };
-    StorageHelper.save('@Language', langInfoToStorage)
-        .then(_ => {
-
-            /**
-             * restart the app.
-             */
-            RNRestart.Restart();
-
-        });
+    RNRestart.Restart();
 };
 
 /**
