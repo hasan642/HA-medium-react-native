@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
-import { Text as RNPaperTxt } from 'react-native-paper';
-import { TextStyle } from 'react-native';
+import {
+    TextStyle,
+    Text as RnTxt
+} from 'react-native';
 import styles from './styles';
 
 /**
@@ -13,6 +15,9 @@ interface TextProps {
      * optional props.
      */
     style?: TextStyle;
+    adjustsFontSizeToFit?: boolean;
+    numberOfLines?: number;
+
 };
 
 /**
@@ -25,18 +30,22 @@ function Text(props: TextProps) {
      */
     const {
         children,
-        style: overrideTextStyle
+        style: overrideTextStyle,
+        adjustsFontSizeToFit,
+        numberOfLines
     } = props;
 
     return (
-        <RNPaperTxt
+        <RnTxt
+            adjustsFontSizeToFit={adjustsFontSizeToFit}
+            numberOfLines={numberOfLines}
             style={[
                 styles.text,
                 overrideTextStyle
             ]}
         >
             {children}
-        </RNPaperTxt>
+        </RnTxt>
     );
 };
 

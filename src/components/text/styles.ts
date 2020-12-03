@@ -9,8 +9,10 @@ import {
  */
 const styles = StyleSheet.create({
     text: {
-        color: color.dark,
-    }
+        color: color.mineShaft,
+        fontFamily: typography.regular,
+        textAlign: 'left'
+    },
 });
 
 /**
