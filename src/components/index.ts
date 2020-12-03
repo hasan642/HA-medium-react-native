@@ -6,3 +6,4 @@ export { default as Image } from './Image/Image';
 export { default as Icon } from './Icon/Icon';
 export { default as Input } from './Input/Input';
 export { default as Loader } from './Loader/Loader';
+export { default as List } from './List/List';
