@@ -445,6 +445,8 @@ PODS:
     - React-Core
   - RNLocalize (1.4.2):
     - React-Core
+  - RNTextSize (4.0.0-rc.1):
+    - React
   - RNVectorIcons (7.1.0):
     - React
   - SDWebImage (5.9.4):
@@ -520,6 +522,7 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - RNTextSize (from `../node_modules/react-native-text-size/ios`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -634,6 +637,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/google-signin"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNTextSize:
+    :path: "../node_modules/react-native-text-size/ios"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -705,6 +710,7 @@ SPEC CHECKSUMS:
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
+  RNTextSize: 7efa06531c6bb7ab6ed070b4ce0d1248cf06fcdf
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
