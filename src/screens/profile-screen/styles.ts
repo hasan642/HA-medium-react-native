@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     contentStyle: {
         width: userProfileCardWidth,
         alignSelf: 'center',
-        borderRadius: 8,
+        borderRadius: 8
     },
     userProfileImg: {
         height: userProfileImg,
